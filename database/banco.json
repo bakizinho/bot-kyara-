@@ -959,5 +959,20 @@
     "emprego": "🛒 Atendente",
     "empregoId": 3,
     "lastWork": 1784308653915
+  },
+  "558487480834@s.whatsapp.net": {
+    "saldo": 0,
+    "xp": 0,
+    "album": {
+      "colecao": [],
+      "repetidas": {},
+      "completo": false,
+      "recompensas": {
+        "30": false,
+        "60": false,
+        "90": false,
+        "100": false
+      }
+    }
   }
 }

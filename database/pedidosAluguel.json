@@ -1,4 +1,22 @@
 {
+  "239638": {
+    "grupo": "120363426091460383@g.us",
+    "comprador": "558198265146@s.whatsapp.net",
+    "plano": "mensal",
+    "dias": 30,
+    "valor": 50,
+    "status": "pendente",
+    "criadoEm": 1787162216539
+  },
+  "429081": {
+    "grupo": "120363426091460383@g.us",
+    "comprador": "558487480834@s.whatsapp.net",
+    "plano": "diario",
+    "dias": 1,
+    "valor": 5,
+    "status": "pendente",
+    "criadoEm": 1787162229850
+  },
   "501948": {
     "grupo": "120363429493179445@g.us",
     "comprador": "244935958035@s.whatsapp.net",
