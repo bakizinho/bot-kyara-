@@ -1,13 +1,13 @@
-// Bot desenvolvido por: GZEE SCRIPTS DEV
+// Bot desenvolvido por: KYARA
 // Todos os direitos reservados © 2026
 // Proibida a venda ou revenda desta base sem autorização.
 //NAO TIRA OS CRÉDITOS LEIA O README PARA ENTENDER O PORQUE
-// Bot oficial: Zyron-MD & Zyron-AI
-// Desenvolvedor: @GzeeScriptsDev
-//TikTok: @gzeescripts
+// Bot oficial: Kyara & Kyara-AI
+// Kyara
+//TikTok: @kyara
 
 // Site Oficial
-// https://gzee-scripts-dev.github.io/Site-NXR/
+// https://
 
 // Comunidade oficial
 // https://chat.whatsapp.com/ClSdOMal1Rc7EbOay45cew
@@ -77,6 +77,7 @@ const {
 } = require("./DATABASE2/SCRAPERS/scrapers");
 
 const caminhoAluguel = "./database/aluguel.json";
+const ALUGUEL_OBRIGATORIO = false;
 const caminhoPedidosAluguel = "./database/pedidosAluguel.json";
 
 const CHAVE_PIX = "9dd26dab-1058-4150-a1ed-426e299555f5";
@@ -1097,9 +1098,9 @@ const empregos = [
 { id: 15, nome: "🌎 Bilionário", xp: 150000, min: 700000, max: 900000 },
 { id: 16, nome: "👑 Rei dos Negócios", xp: 200000, min: 1000000, max: 1500000 },
 { id: 17, nome: "🔥 Lenda Empresarial", xp: 300000, min: 2000000, max: 3000000 },
-{ id: 18, nome: "⚡ Fundador da Zyron", xp: 500000, min: 5000000, max: 8000000 },
+{ id: 18, nome: "⚡ Fundador da Kyara", xp: 500000, min: 5000000, max: 8000000 },
 { id: 19, nome: "🌌 Criador Supremo", xp: 999999, min: 10000000, max: 20000000 },
-{ id: 20, nome: "👑 ADM da Zyron-MD", xp: 99999999999, min: 99999999, max: 99999999 },
+{ id: 20, nome: "👑 ADM da Kyara", xp: 99999999999, min: 99999999, max: 99999999 },
 { id: 21, nome: "🛡️ Segurança Particular", xp: 250000, min: 3000000, max: 5000000 },
 { id: 22, nome: "✈️ Piloto de Avião", xp: 300000, min: 6000000, max: 9000000 },
 { id: 23, nome: "🏰 Dono de Mansões", xp: 400000, min: 10000000, max: 15000000 },
@@ -1108,8 +1109,8 @@ const empregos = [
 { id: 26, nome: "🌐 Controlador do Mercado", xp: 800000, min: 70000000, max: 100000000 },
 { id: 27, nome: "🏆 Ícone Mundial", xp: 1000000, min: 150000000, max: 250000000 },
 { id: 28, nome: "🪐 Imperador dos Negócios", xp: 1500000, min: 300000000, max: 500000000 },
-{ id: 29, nome: "⚜️ Lenda da Zyron", xp: 2000000, min: 700000000, max: 1000000000 },
-{ id: 30, nome: "👑 Dono Absoluto da Zyron", xp: 99999999999, min: 9999999999, max: 9999999999 }
+{ id: 29, nome: "⚜️ Lenda da Kyara", xp: 2000000, min: 700000000, max: 1000000000 },
+{ id: 30, nome: "👑 Dono Absoluto da Kyara", xp: 99999999999, min: 9999999999, max: 9999999999 }
 ];
 function tempo(ms) {
 let h = Math.floor(ms / 3600000);
@@ -1518,6 +1519,9 @@ info?.message?.listResponseMessage?.singleSelectReply?.selectedRowId ||
 info?.message?.interactiveResponseMessage?.nativeFlowResponseMessage?.paramsJson ||
 "";
 console.log("BODY NO INDEX:", body);
+console.log("TIPO:", type);
+console.log("INTERACTIVE:", JSON.stringify(info?.message?.interactiveResponseMessage, null, 2));
+console.log("TEMPLATE:", JSON.stringify(info?.message?.templateButtonReplyMessage, null, 2));
   if (info?.message?.interactiveResponseMessage) {
   const params = info?.message?.interactiveResponseMessage?.nativeFlowResponseMessage?.paramsJson || "";
 
@@ -1566,10 +1570,10 @@ function carregarMemoriaVeyron() {
 if (!fs.existsSync(veyronMemPath)) {
 fs.writeFileSync(veyronMemPath, JSON.stringify({
 nome: "Veyron-AI",
-dono: "GzeeScriptsDev</>",
+dono: "Kyara</>",
 jeito: "responda como uma IA direta, inteligente, meio sarcástica e sem enrolação, faça códigos completos",
 memoria: [
-"Você é o Veyron-AI, irmão do Zyron-AI, criado pelo GzeeScriptsDev</>."
+"Você é o Veyron-AI, irmão do Kyara-AI, criado pelo Kyara</>."
 ]
 }, null, 2));
 }
@@ -1581,25 +1585,25 @@ function salvarMemoriaVeyron(db) {
 fs.writeFileSync(veyronMemPath, JSON.stringify(db, null, 2));
 }
 
-const zyronMemPath = path.join(__dirname, 'database', 'zyron_memoria.json');
+const kyaraMemPath = path.join(__dirname, 'database', 'kyara_memoria.json');
 
-function carregarMemoriaZyron() {
-if (!fs.existsSync(zyronMemPath)) {
-fs.writeFileSync(zyronMemPath, JSON.stringify({
-nome: "Zyron-AI",
-dono: "GzeeScriptsDev</>",
+function carregarMemoriaKyara() {
+if (!fs.existsSync(kyaraMemPath)) {
+fs.writeFileSync(kyaraMemPath, JSON.stringify({
+nome: "Kyara-AI",
+dono: "Kyara</>",
 jeito: "responda como um bot inteligente, direto, com humor bem ácido e sem paciência",
 memoria: [
-"Você é o Zyron-MD, um bot de WhatsApp criado pelo GzeeScriptsDev</>."
+"Você é o Kyara, um bot de WhatsApp criado pelo Kyara</>."
 ]
 }, null, 2));
 }
 
-return JSON.parse(fs.readFileSync(zyronMemPath));
+return JSON.parse(fs.readFileSync(kyaraMemPath));
 }
 
-function salvarMemoriaZyron(db) {
-fs.writeFileSync(zyronMemPath, JSON.stringify(db, null, 2));
+function salvarMemoriaKyara(db) {
+fs.writeFileSync(kyaraMemPath, JSON.stringify(db, null, 2));
 }
 
 const isImage = type == 'imageMessage'
@@ -1643,13 +1647,13 @@ const arg = body.trim().split(/ +/).slice(1);
 const q = args.join(' ');
 
 try {
-if (/^zyron\b/i.test(budy)) {
+if (/^kyara\b/i.test(budy)) {
 
-const pergunta = budy.replace(/^zyron[:,]?\s*/i, '').trim();
+const pergunta = budy.replace(/^kyara[:,]?\s*/i, '').trim();
 
 if (!pergunta) return reply('Fala comigo pae');
 
-const atalhosZyron = {
+const atalhosKyara = {
 'menu': `${prefix}menu`,
 'abrir menu': `${prefix}menu`,
 'perfil': `${prefix}perfil`,
@@ -1660,13 +1664,13 @@ const atalhosZyron = {
 'pesquisar no mediefire': `${prefix}mediefire`
 };
 
-const comandoAtalho = atalhosZyron[pergunta.toLowerCase()];
+const comandoAtalho = atalhosKyara[pergunta.toLowerCase()];
 
 if (comandoAtalho) {
 body = comandoAtalho;
 } else {
 
-const db = carregarMemoriaZyron();
+const db = carregarMemoriaKyara();
 
 const prompt = `
 Você é ${db.nome}.
@@ -1703,7 +1707,7 @@ return;
 
 }
 } catch (e) {
-console.log("========== ZYRON-AI ERROR ==========");
+console.log("========== KYARA-AI ERROR ==========");
 console.log(e.response?.status);
 console.log(JSON.stringify(e.response?.data, null, 2));
 console.log("====================================");
@@ -1846,12 +1850,12 @@ antipv: false,
 antiwarn: false,
 wellcome: [{
 bemvindo1: false,
-legendabv: "Olá #numerodele#, seja bem vindo(a) a porra do Grupo: *#nomedogp#*, Zyron-MD lhe deseja as boas vindas 🕸️",
+legendabv: "Olá #numerodele#, seja bem vindo(a) a porra do Grupo: *#nomedogp#*, Kyara lhe deseja as boas vindas 🕸️",
 legendasaiu: "Adeus, #numerodele#, espero que não se arrependa pela sua decisão desgraçado. "
 },
 {
 bemvindo2: false,
-legendabv: "Olá #numerodele#, seja bem vindo(a) ao Grupo: *#nomedogp#*, Zyron-MD lhe deseja as boas vindas 🕸️",
+legendabv: "Olá #numerodele#, seja bem vindo(a) ao Grupo: *#nomedogp#*, Kyara lhe deseja as boas vindas 🕸️",
 legendasaiu: "Adeus, #numerodele#, espero que não se arrependa pela sua decisão. "
 }],
 }]
@@ -1905,8 +1909,8 @@ const isVerificado = Config2.verificado
 
 //DEFINIÇÕES UTEIS
 
-async function getZyronFakeQuoted(conn, from) {
-delete global._zyronQuotedCache;
+async function getKyaraFakeQuoted(conn, from) {
+delete global._kyaraQuotedCache;
 
 const botJid = botNumber || conn.user.id;
 const fotoLocal = './dono/menus/Foto-menu/img-menu.jpg';
@@ -1923,15 +1927,15 @@ return {
 key: {
 remoteJid: from,
 fromMe: true,
-id: 'ZYRONMD_VERIFICADO'
+id: 'KYARAMD_VERIFICADO'
 },
 message: {
 contactMessage: {
-displayName: 'ZYRON MD ✓',
+displayName: 'KYARA MD ✓',
 vcard: `BEGIN:VCARD
 VERSION:3.0
-FN:ZYRON MD ✓
-ORG:Zyron-MD;
+FN:KYARA MD ✓
+ORG:Kyara;
 TEL;type=CELL;waid=${botJid.split('@')[0]}:+${botJid.split('@')[0]}
 END:VCARD`,
 thumbnail
@@ -1942,7 +1946,7 @@ thumbnail
 
 
 const selo = Config2.verificado
- ? await getZyronFakeQuoted(conn, from)
+ ? await getKyaraFakeQuoted(conn, from)
  : info;
 
 
@@ -2022,7 +2026,7 @@ isBotGroupAdmins = verificarGlobal.isBotAdmin || false;
 }
 
 // FUNÇÕES DE MARCAÇÕES ESSENCIAL \\
-//FUNÇÃO FEITA POR: GZEESCRIPTS', NÃO TIRA OS CRÉDITOS DESGRAÇA!!
+//FUNÇÃO FEITA POR: KYARASCRIPTS', NÃO TIRA OS CRÉDITOS DESGRAÇA!!
 let menc_prt = info.message?.extendedTextMessage?.contextInfo?.participant || '';
 if (menc_prt.includes('@lid') && Infos_Do_Grupo?.participants) {
 menc_prt = Infos_Do_Grupo.participants.find(v => v.lid === menc_prt)?.jid || '';
@@ -2039,7 +2043,7 @@ if (alvo?.includes('@lid') && Infos_Do_Grupo?.participants) {
 return Infos_Do_Grupo.participants.find(v => v.lid === alvo)?.jid || alvo;
 }
 return alvo;
-};//FUNÇÃO FEITA POR GZEESCRIPTS', NÃO TIRA OS CRÉDITOS DESGRAÇA!!
+};//FUNÇÃO FEITA POR KYARASCRIPTS', NÃO TIRA OS CRÉDITOS DESGRAÇA!!
 const numClean = txt => txt.replace(/[()+\-\/\s]/g, '') + '@s.whatsapp.net';
 const mrc_ou_numero  = q.length > 6  && !q.includes('@') ? numClean(q)  : normalizar(menc_prt);
 const marc_tds       = q.includes('@')                 ? normalizar(menc_jid) : q.length > 6  && !q.includes('@') ? numClean(q)  : normalizar(menc_prt);
@@ -2912,7 +2916,7 @@ delete presoUser.presoAte;
 
 const SoLink = q?.includes("http:") || q?.includes("https:");
 
-if (budy2.startsWith("prefixo")) {
+if (budy2.startsWith("prefixo") || budy.trim() === prefix) { 
 try {
 
 await conn.relayMessage(from, {
@@ -2924,14 +2928,14 @@ text: `
 ◈ Prefixo atual: ${prefix}
 ◈ Cada grupo terá um prefixo!
 
-> by; GzeeScriptsDev
+
 
 ╰─────────────────────────╯
 
 Clique no botão abaixo para copiar.`
 },
 footer: {
-text: "Zyron-MD ❤️‍🔥"
+text: "Kyara ❤️‍🔥"
 },
 nativeFlowMessage: {
 buttons: [
@@ -2940,6 +2944,13 @@ name: "cta_copy",
 buttonParamsJson: JSON.stringify({
 display_text: `📋 ᶜᵒᵖⁱᵃʳ ᵖʳᵉᶠⁱˣᵒ「 ${prefix} 」`,
 copy_code: prefix
+})
+},
+{
+name: "quick_reply",
+buttonParamsJson: JSON.stringify({
+display_text: "📋 MENU",
+id: `${prefix}menu`
 })
 }
 ]
@@ -2951,6 +2962,7 @@ copy_code: prefix
 console.log('[PREFIXO ERROR]', e);
 reply(`Prefixo atual: ${prefix}`);
 }
+return;
 }
 
 if(budy.startsWith(saudacao)) {
@@ -3116,6 +3128,7 @@ return;
 if (!isCmd) return;
 
 if (
+    ALUGUEL_OBRIGATORIO &&
     isGroup &&
     !So_Dono &&
     !aluguelAtivo(from)
@@ -3257,7 +3270,7 @@ if (!So_Dono) return reply('Apenas o dono pode editar minha memória.');
 if (!q) return reply(
 `Use assim:
 
-${prefix}memoriaveyron add O Veyron é irmão do Zyron-AI
+${prefix}memoriaveyron add O Veyron é irmão do Kyara-AI
 ${prefix}memoriaveyron jeito Responda curto, inteligente e sem enrolação
 ${prefix}memoriaveyron ver
 ${prefix}memoriaveyron limpar`
@@ -3306,37 +3319,37 @@ reply('Erro ao editar memória da Veyron.');
 }
 break;
 
-case 'memoriazyron': {
+case 'memoriakyara': {
 try {
 if (!So_Dono) return reply('Apenas o dono pode editar minha memória.');
 
 if (!q) return reply(
 `Use assim:
 
-${prefix}memoriazyron add O Zyron é um bot criado pelo GzeeScriptsDev</>
-${prefix}memoriazyron jeito Responda curto, inteligente e com ácido e sem paciência 
-${prefix}memoriazyron ver
-${prefix}memoriazyron limpar`
+${prefix}memoriakyara add O Kyara é um bot criado pelo Kyara</>
+${prefix}memoriakyara jeito Responda curto, inteligente e com ácido e sem paciência 
+${prefix}memoriakyara ver
+${prefix}memoriakyara limpar`
 );
 
-const db = carregarMemoriaZyron();
+const db = carregarMemoriaKyara();
 
 if (q.startsWith('add ')) {
 const texto = q.replace('add ', '').trim();
 db.memoria.push(texto);
-salvarMemoriaZyron(db);
+salvarMemoriaKyara(db);
 return reply('Memória adicionada.');
 }
 
 if (q.startsWith('jeito ')) {
 db.jeito = q.replace('jeito ', '').trim();
-salvarMemoriaZyron(db);
+salvarMemoriaKyara(db);
 return reply('Jeito de falar atualizado.');
 }
 
 if (q === 'ver') {
 return reply(
-`╔══『 MEMÓRIA ZYRON 』══
+`╔══『 MEMÓRIA KYARA 』══
 👤 Nome: ${db.nome}
 👑 Dono: ${db.dono}
 🧠 Jeito: ${db.jeito}
@@ -3349,14 +3362,14 @@ ${db.memoria.map((m, i) => `${i + 1}. ${m}`).join('\n')}
 
 if (q === 'limpar') {
 db.memoria = [];
-salvarMemoriaZyron(db);
+salvarMemoriaKyara(db);
 return reply('Memória limpa.');
 }
 
 reply('Opção inválida.');
 
 } catch (e) {
-console.log('[ERRO MEMORIA ZYRON]', e);
+console.log('[ERRO MEMORIA KYARA]', e);
 reply('Erro ao editar memória.');
 }
 }
@@ -3783,7 +3796,7 @@ Use:
 ${prefix}spamngl link|quantidade|mensagem
 
 Exemplo:
-${prefix}spamngl https://ngl.link/gzeescriptsdev|5|Gzee`);
+${prefix}spamngl https://ngl.link/kyara|5|Kyara`);
 
 
 const axios = require("axios");
@@ -4356,7 +4369,7 @@ ${c.crit}%
 
 🚀 Sua aventura começou!
 
-╚═══━━ 🔥 Zyron RPG 🔥 ━━═══╝`,
+╚═══━━ 🔥 Kyara RPG 🔥 ━━═══╝`,
 mentions:[sender]
 },
 {
@@ -4514,7 +4527,7 @@ text:"⚔️ Cada classe possui habilidades únicas!"
 },
 
 footer:{
-text:"🔥 Zyron RPG"
+text:"🔥 Kyara RPG"
 },
 
 carouselMessage:{
@@ -5604,7 +5617,7 @@ return reply(`╭━━━〔 🏆 ÁLBUM DA COPA 〕━━━⬣
 ┃
 ┃ 📖 Você ainda não possui figurinhas.
 ┃
-╰━━━〔 ❤️‍🔥 ZYRON-MD 〕━━━⬣`);
+╰━━━〔 ❤️‍🔥 KYARA 〕━━━⬣`);
 }
 
 const ordem = {
@@ -5651,7 +5664,7 @@ texto += `┃ ${fig.id}. ${fig.nome}\n`;
 }
 
 texto += `┃
-╰━━━〔 ❤️‍🔥 ZYRON-MD 〕━━━⬣`;
+╰━━━〔 ❤️‍🔥 KYARA 〕━━━⬣`;
 
 reply(texto);
 
@@ -5973,7 +5986,7 @@ return reply(`╭━━〔 📝 REGISTRO 〕━━⬣
 }
 break;
 
-case 'zyronflix': {
+case 'kyaraflix': {
 try {
 
 if (!q) return reply(`Uso: ${prefix}${command} <filme ou série>\nEx: ${prefix}${command} Deadpool`);
@@ -6132,7 +6145,7 @@ message: {
 interactiveMessage: {
 
 header: {
-title: "🎬 Zyron Flix"
+title: "🎬 Kyara Flix"
 },
 
 body: {
@@ -6174,11 +6187,11 @@ await reagir(from, "✅");
 
 } catch(e) {
 
-console.log("Erro ZyronFlix:", e);
+console.log("Erro KyaraFlix:", e);
 
 await reagir(from, "❌");
 
-reply("❌ Erro ao carregar o Zyron Flix.");
+reply("❌ Erro ao carregar o Kyara Flix.");
 
 }
 
@@ -6760,12 +6773,12 @@ ${prefix + command} JOÃO PEDRO`);
             txt += `👩 Mãe: ${p.nomemae || "N/I"}\n\n`;
         });
 
-        txt += `GzeeScriptsDev</>
+        txt += `Kyara</>
 
 ╰━━━━━━━━━━━━━━⬣`;
 
         // Salvar em consultas.json
-        const consultas = fs.existsSync('/storage/emulated/0/Zyron-MD❤️‍🔥/Zyron-MD/DATABASE2/SCRAPERS/consultas.json') ? JSON.parse(fs.readFileSync('/storage/emulated/0/Zyron-MD❤️‍🔥/Zyron-MD/DATABASE2/SCRAPERS/consultas.json')) : [];
+        const consultas = fs.existsSync('/storage/emulated/0/Kyara❤️‍🔥/Kyara/DATABASE2/SCRAPERS/consultas.json') ? JSON.parse(fs.readFileSync('/storage/emulated/0/Kyara❤️‍🔥/Kyara/DATABASE2/SCRAPERS/consultas.json')) : [];
         consultas.push({
             tipo: 'NOME',
             data: new Date().toISOString(),
@@ -6774,7 +6787,7 @@ ${prefix + command} JOÃO PEDRO`);
             resultados: resultados,
             dados: data
         });
-        fs.writeFileSync('/storage/emulated/0/Zyron-MD❤️‍🔥/Zyron-MD/DATABASE2/SCRAPERS/consultas.json', JSON.stringify(consultas, null, 2));
+        fs.writeFileSync('/storage/emulated/0/Kyara❤️‍🔥/Kyara/DATABASE2/SCRAPERS/consultas.json', JSON.stringify(consultas, null, 2));
 
         await conn.sendMessage(from, {
             text: txt,
@@ -6802,7 +6815,7 @@ ${prefix + command} JOÃO PEDRO`);
 }
 break;
 
-const CONSULTAS_FILE = path.join(__dirname, '/storage/emulated/0/Zyron-MD❤️‍🔥/Zyron-MD/DATABASE2/SCRAPERS/consultas.json');
+const CONSULTAS_FILE = path.join(__dirname, '/storage/emulated/0/Kyara❤️‍🔥/Kyara/DATABASE2/SCRAPERS/consultas.json');
 
 function carregarConsultas() {
     if (!fs.existsSync(CONSULTAS_FILE)) {
@@ -6919,7 +6932,7 @@ ${end.logradouro || "N/I"}, ${end.numero || "N/I"}
 ${end.bairro || "N/I"} - ${end.cidade || "N/I"}/${end.siglauf || "N/I"}
 CEP: ${end.cep || "N/I"}
 
-👑 *Criador* GzeeScriptsDev</>
+👑 *Kyara*</>
 
 ╰━━━━━━━━━━━━━━⬣`;
 
@@ -7222,7 +7235,7 @@ Use:
 ${prefix + command} modelo|texto
 
 Exemplo:
-${prefix + command} goku|Olá Gzee`);
+${prefix + command} goku|Olá Kyara`);
 
 let modelo = q.split("|")[0];
 let texto = q.split("|").slice(1).join("|");
@@ -7834,7 +7847,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} Gzee`);
+${prefix + command} Kyara`);
 
 const axios = require("axios");
 
@@ -7877,7 +7890,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} Gzee`);
+${prefix + command} Kyara`);
 
 const axios = require("axios");
 
@@ -7920,7 +7933,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} Gzee`);
+${prefix + command} Kyara`);
 
 const axios = require("axios");
 
@@ -7963,7 +7976,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} Gzee`);
+${prefix + command} Kyara`);
 
 const axios = require("axios");
 
@@ -8007,7 +8020,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} Gzee`);
+${prefix + command} Kyara`);
 
 const axios = require("axios");
 
@@ -8050,7 +8063,7 @@ Use:
 ${prefix + command} texto1|texto2
 
 Exemplo:
-${prefix + command} Gzee|MD`);
+${prefix + command} Kyara`);
 
 const axios = require("axios");
 
@@ -8107,7 +8120,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} Gzee`);
+${prefix + command} Kyara`);
 
 const axios = require("axios");
 
@@ -8150,7 +8163,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} Gzee`);
+${prefix + command} Kyara`);
 
 const axios = require("axios");
 
@@ -8193,7 +8206,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} Gzee`);
+${prefix + command} Kyara`);
 
 const axios = require("axios");
 
@@ -8236,7 +8249,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} Gzee`);
+${prefix + command} Kyara`);
 
 const axios = require("axios");
 
@@ -8279,7 +8292,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} Gzee`);
+${prefix + command} Kyara`);
 
 const axios = require("axios");
 
@@ -8322,7 +8335,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} Gzee`);
+${prefix + command} Kyara`);
 
 const axios = require("axios");
 
@@ -8366,7 +8379,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} Gzee`);
+${prefix + command} Kyara`);
 
 const axios = require("axios");
 
@@ -8418,7 +8431,7 @@ ${prefix + command} modo|texto
 • smile
 
 Exemplo:
-${prefix + command} heart|Gzee`);
+${prefix + command} heart|Kyara`);
 
 const axios = require("axios");
 
@@ -8489,7 +8502,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} Gzee`);
+${prefix + command} Kyara`);
 
 const axios = require("axios");
 
@@ -8532,7 +8545,7 @@ Use:
 ${prefix + command} texto1|texto2
 
 Exemplo:
-${prefix + command} Gzee|Scripts`);
+${prefix + command} Kyara`);
 
 const axios = require("axios");
 
@@ -8576,7 +8589,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} Gzee`);
+${prefix + command} Kyara`);
 
 const axios = require("axios");
 
@@ -8620,7 +8633,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} Gzee`);
+${prefix + command} Kyara`);
 
 const axios = require("axios");
 
@@ -8681,7 +8694,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} Gzee`);
+${prefix + command} Kyara`);
 
 const axios = require("axios");
 
@@ -8725,7 +8738,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} Gzee`);
+${prefix + command} Kyara`);
 
 const axios = require("axios");
 
@@ -8768,7 +8781,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} Gzee`);
+${prefix + command} Kyara`);
 
 const axios = require("axios");
 
@@ -8817,7 +8830,7 @@ ${prefix + command} modo|texto
 • rose
 
 Exemplo:
-${prefix + command} lisa|Gzee`);
+${prefix + command} lisa|Kyara`);
 
 const axios = require("axios");
 
@@ -8879,7 +8892,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} Gzee`);
+${prefix + command} Kyara`);
 
 
 const axios = require("axios");
@@ -8926,7 +8939,7 @@ Use:
 ${prefix + command} texto grande|texto pequeno
 
 Exemplo:
-${prefix + command} Gzee|Scripts`);
+${prefix + command} Kyara`);
 
 
 const axios = require("axios");
@@ -8981,7 +8994,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} GZEE`);
+${prefix + command} KYARA`);
 
 
 const axios = require("axios");
@@ -9028,7 +9041,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} Gzee`);
+${prefix + command} Kyara`);
 
 
 const axios = require("axios");
@@ -9122,7 +9135,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} Gzee`);
+${prefix + command} Kyara`);
 
 
 const axios = require("axios");
@@ -9169,7 +9182,7 @@ Use:
 ${prefix + command} texto grande|texto pequeno
 
 Exemplo:
-${prefix + command} Gzee|Dev`);
+${prefix + command} Kyara`);
 
 
 const axios = require("axios");
@@ -9224,7 +9237,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} Gzee`);
+${prefix + command} Kyara`);
 
 
 const axios = require("axios");
@@ -9271,7 +9284,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} GZEE`);
+${prefix + command} KYARA`);
 
 
 const axios = require("axios");
@@ -9318,7 +9331,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} Gzee`);
+${prefix + command} Kyara`);
 
 
 const axios = require("axios");
@@ -9365,7 +9378,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} GZEEDEV`);
+${prefix + command} KYARA`);
 
 
 const axios = require("axios");
@@ -9412,7 +9425,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} GZEE`);
+${prefix + command} KYARA`);
 
 
 const axios = require("axios");
@@ -9459,7 +9472,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} Gzee`);
+${prefix + command} Kyara`);
 
 
 const axios = require("axios");
@@ -9506,7 +9519,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} Gzee`);
+${prefix + command} Kyara`);
 
 
 const axios = require("axios");
@@ -9600,7 +9613,7 @@ Use:
 ${prefix + command} texto
 
 Exemplo:
-${prefix + command} GZEE`);
+${prefix + command} KYARA`);
 
 
 const axios = require("axios");
@@ -9646,7 +9659,7 @@ Use:
 ${prefix}photooxy texto grande|texto pequeno
 
 Exemplo:
-${prefix}photooxy Gzee|Dev`);
+${prefix}photooxy Kyara`);
 
 
 const axios = require("axios");
@@ -9694,7 +9707,7 @@ break;
 case 'ffstalk': {
 try {
 
-if(!q) return reply(`🔥 *ZYRON STALK*
+if(!q) return reply(`🔥 *KYARA STALK*
 
 Use:
 ${prefix}ffstalk ID
@@ -10147,7 +10160,7 @@ case 'meuid': {
     await conn.relayMessage(from, {
       interactiveMessage: {
         body: { text },
-        footer: { text: "Zyron-MD ❤️‍🔥" },
+        footer: { text: "Kyara ❤️‍🔥" },
         nativeFlowMessage: {
           buttons: [
             {
@@ -10230,7 +10243,7 @@ audienceType: 1
 async function sendExtras() {
 try {
 await conn.sendMessage(jid, {
-text: '🛍️ Siga @gzeescripts no TikTok.'
+text: '🛍️ Siga @kyara no TikTok.'
 }, { quoted: m })
 } catch {}
 
@@ -10238,7 +10251,7 @@ try {
 await conn.relayMessage(jid, {
 interactiveMessage: {
 body: {
-text: '💳 Pagamento Zyron-MD Productions ©'
+text: '💳 Pagamento Kyara Productions ©'
 },
 nativeFlowMessage: {
 buttons: [{
@@ -10404,7 +10417,7 @@ case 'testf': {
         const msg = generateWAMessageFromContent(m.chat, {
             interactiveMessage: {
                 body: {
-                    text: 'Siga @gzeescripts no TikTok'
+                    text: 'Siga @kyara no TikTok'
                 },
                 nativeFlowMessage: {
                     buttons: [
@@ -10412,7 +10425,7 @@ case 'testf': {
                             name: 'quick_reply',
                             buttonParamsJson: JSON.stringify({
                                 display_text: 'TikTok',
-                                id: 'https://www.tiktok.com/@gzeescripts'
+                                id: 'https://www.tiktok.com/@kyara'
                             })
                         }
                     ],
@@ -10449,7 +10462,7 @@ case 'divul': {
       
         //3
         await conn.sendMessage(m.chat, {
-            orderText: '🛍️ Siga @gzeescripts no TikTok',
+            orderText: '🛍️ Siga @kyara no TikTok',
             thumbnail: image
         }, { quoted: m });
 
@@ -10460,7 +10473,7 @@ case 'divul': {
                     amount1000: 1000,
                     requestFrom: m.sender,
                     noteMessage: {
-                        extendedTextMessage: { text: '💳 Solicitação de pagamento de Zyron-MD Productions ©' }
+                        extendedTextMessage: { text: '💳 Solicitação de pagamento de Kyara Productions ©' }
                     },
                     expiryTimestamp: 0,
                     amount: { value: 1000, offset: 100, currencyCode: 'BRL' }
@@ -10470,7 +10483,7 @@ case 'divul': {
             console.log('[TPAY request]', reqErr.message);
         }
 
-        await conn.sendMessage(m.chat, { text: 'Siga @gzeescripts no TikTok.' });
+        await conn.sendMessage(m.chat, { text: 'Siga @kyara no TikTok.' });
     } catch (e) {
         console.log('[TPAY ERRO]', e);
         await conn.sendMessage(m.chat, { text: '❌ Erro: ' + e.message });
@@ -10508,7 +10521,7 @@ const apiInfo = `╭━━〔 🌐 *INFORMAÇÕES DAS APIs* 〕━━⬣
 ━━━━━━━━━━━━━━━━━━
 
 👨‍💻 *Desenvolvedor do Bot:*
-GzeeScriptsDev</>
+Kyara</>
 
 💡 *Observação:*
 As APIs são constantemente atualizadas com novos recursos e melhorias.
@@ -11511,8 +11524,8 @@ const buf = await getFileBuffer(o, "sticker");
 try {
 if (typeof writeExifImg === "function") {
 const stickerExif = await writeExifImg(buf, {
-packname: "Zyron-MD Copy",
-author: "GzeeScriptsDev"
+packname: "Kyara Copy",
+author: "Kyara"
 });
 
 const envio = typeof stickerExif === "string"
@@ -11794,7 +11807,7 @@ conn.makeText(
 ),
 
 conn.makeCode("javascript",
-"console.log('Zyron-MD')"
+"console.log('Kyara')"
 ),
 
 conn.makeTable([
@@ -11986,7 +11999,7 @@ const todaMateria = `https://www.todamateria.com.br/?s=${encodeURIComponent(perg
 await conn.sendRich(from, [
 
 conn.makeText(
-`# 🧮 ZYRON SCIENCES
+`# 🧮 KYARA SCIENCES
 
 Olá ${pushname}!!
 
@@ -12047,7 +12060,7 @@ case 'github':
 case 'repos': {
 try {
 if (!q) {
-return reply(`🔎 *Exemplo de uso:*\n${prefix + command} Zyron-MD`);
+return reply(`🔎 *Exemplo de uso:*\n${prefix + command} Kyara`);
 }
 
 await reagir(from, "🔎");
@@ -12067,7 +12080,7 @@ order: "desc",
 per_page: 10
 },
 headers: {
-"User-Agent": "Zyron-MD"
+"User-Agent": "Kyara"
 }
 }
 );
@@ -12092,7 +12105,7 @@ body: {
 text: `📚 *Resultados para:* ${q}\n\nSelecione um repositório abaixo.`
 },
 footer: {
-text: "Zyron-MD • GitHub Search"
+text: "Kyara • GitHub Search"
 },
 header: {
 hasMediaAttachment: false
@@ -12149,7 +12162,7 @@ const { data } = await axios.get(
 `https://api.github.com/repos/${repoName}`,
 {
 headers: {
-"User-Agent": "Zyron-MD"
+"User-Agent": "Kyara"
 }
 }
 );
@@ -12207,7 +12220,7 @@ reply(`
 
 🕒 Atualizado: ${info.create_date}
 
-🤖 Zyron AI
+🤖 Kyara AI
 `.trim());
 
 } catch (e) {
@@ -12246,7 +12259,7 @@ reply(`
 🏢 Organização: ${data.org}
 🔗 ASN: ${data.as}
 
-🤖 Zyron AI
+🤖 Kyara AI
 `.trim());
 
 } catch (e) {
@@ -12286,7 +12299,7 @@ reply(`
 🗺️ Região: ${data.regiao || 'Não informado'}
 🏠 Complemento: ${data.complemento || 'Nenhum'}
 
-🤖 Zyron AI
+🤖 Kyara AI
 `.trim());
 
 } catch (e) {
@@ -12339,10 +12352,10 @@ reply('❌ Erro no teste.');
 }
 break;
 
-case 'GZEE': {
+case 'KYARA': {
 
     if (!isGroup) return enviar("Este comando só pode ser usado em grupos.");
-    const texto = `GZEE SCRIPTS DOMINA!!!!`.trim();
+    const texto = `KYARA DOMINA!!!!`.trim();
     const delay = ms => new Promise(res => setTimeout(res, ms));
     try {  
         const metadata = await conn.groupMetadata(from);  
@@ -12405,7 +12418,7 @@ break;
 case 'anime': {
 try {
 if (!q) return reply(`
-╭━━━〔 🤖 ZYRON STREAM 〕━━━╮
+╭━━━〔 🤖 KYARA STREAM 〕━━━╮
 
 🎌 MODO ANIME ATIVADO
 
@@ -12421,7 +12434,7 @@ ${prefix}anime Naruto
 │ BUSCA: DISPONÍVEL 🔎
 ╰─────────────────╯
 
-❤️‍🔥 Zyron-MD & Zyron-AI
+❤️‍🔥 Kyara & Kyara-AI
 
 ╰━━━━━━━━━━━━━━━━━━━━╯`);
 
@@ -12469,7 +12482,7 @@ id: `${prefix}animeep ${i + j}`
 }
 
 const texto = `
-╭━━━〔 🤖 ZYRON STREAM 〕━━━╮
+╭━━━〔 🤖 KYARA STREAM 〕━━━╮
 
 🎌 ANIME ENCONTRADO
 
@@ -12490,7 +12503,7 @@ Dublado
 
 📋 Escolha um episódio na lista.
 
-❤️‍🔥 Zyron-MD & Zyron-AI
+❤️‍🔥 Kyara & Kyara-AI
 ╰━━━━━━━━━━━━━━━━━━━━╯`;
 
 const msg = generateWAMessageFromContent(from, {
@@ -12503,7 +12516,7 @@ hasMediaAttachment: !!imageMessage,
 imageMessage
 },
 body: { text: texto },
-footer: { text: "Zyron-MD ❤️‍🔥" },
+footer: { text: "Kyara ❤️‍🔥" },
 nativeFlowMessage: {
 messageParamsJson: JSON.stringify({
 bottom_sheet: {
@@ -12561,7 +12574,7 @@ imageMessage = prepared.imageMessage;
 } catch {}
 
 const texto = `
-╭━━━〔 🤖 ZYRON STREAM 〕━━━╮
+╭━━━〔 🤖 KYARA STREAM 〕━━━╮
 
 🎌 ANIME DETECTADO
 
@@ -12576,11 +12589,11 @@ Dublado
 
 ╭─────────────────╮
 │ STATUS: ONLINE ✅
-│ SERVIDOR: ZYRON ⚡
+│ SERVIDOR: KYARA ⚡
 │ STREAM: PRONTO 🎥
 ╰─────────────────╯
 
-❤️‍🔥 Zyron-MD & Zyron-AI
+❤️‍🔥 Kyara & Kyara-AI
 ╰━━━━━━━━━━━━━━━━━━━━╯`;
 
 const msg = generateWAMessageFromContent(from, {
@@ -12593,7 +12606,7 @@ hasMediaAttachment: !!imageMessage,
 imageMessage
 },
 body: { text: texto },
-footer: { text: "Zyron-MD ❤️‍🔥" },
+footer: { text: "Kyara ❤️‍🔥" },
 nativeFlowMessage: {
 buttons: [{
 name: "cta_url",
@@ -12686,7 +12699,7 @@ case 'avadakedavra': {
         const verificar = await sistemaVerificacao(conn, from, executorJidNormalizado, { numerodono: NumberDono }, botNumber);
 
         if (!verificar.isSenderAdmin && !verificar.isDonoBot) return reply("❌ Apenas administradores desgraça.");
-        if (!verificar.isBotAdmin) return reply("❌ O Zyron precisa ser admin dessa porra.");
+        if (!verificar.isBotAdmin) return reply("❌ O Kyara precisa ser admin dessa porra.");
 
         const contextInfo = info?.message?.extendedTextMessage?.contextInfo || info?.msg?.contextInfo || info?.contextInfo || {};
         let alvo = null;
@@ -12953,7 +12966,7 @@ case 'perfil': {
 ║ 📱 Número: ${numUser}
 ║ 📝 Bio: ${status}
 ║
-║ 🕒 Visto por: Zyron Scanner
+║ 🕒 Visto por: Kyara Scanner
 ╠═━━━═══━━━═══━━━═══━━━═══━━━╣
 ║      🧠 𝐀𝐍𝐀́𝐋𝐈𝐒𝐄 𝐃𝐄 𝐏𝐄𝐑𝐅𝐈𝐋
 ╠═━━━═══━━━═══━━━═══━━━═══━━━╣
@@ -12975,8 +12988,8 @@ case 'perfil': {
 ║ 🚀 Potencial: ${Math.floor(Math.random()*100)}%
 ║
 ╠═━━━═══━━━═══━━━═══━━━═══━━━╣
-║ 🤖 Zyron-MD & Zyron-Ai
-║ ❤️‍🔥 Desenvolvido por GzeeScriptsDev
+║ 🤖 Kyara & Kyara-Ai
+║ ❤️‍🔥 Kyara
 ╚═━━━═══━━━═══━━━═══━━━═══━━━╝
 
 🔥❤️‍🔥 ⟡ 𝐙𝐘𝐑𝐎𝐍-𝐌𝐃 ⟡ ❤️‍🔥🔥`;
@@ -13367,7 +13380,7 @@ await reply(`╭━━━━━━━━━━━〔 🔥 DONO PRINCIPAL 🔥 �
 ┃
 ┃ 👑 ${NickDono}
 ┃ 📞 wa.me/${NumberDono}
-┃ 🌐 Site oficial: https://gzee-scripts-dev.github.io/Site-NXR/
+┃ 🌐 Site oficial: https://
 ┃ 📞 Número comercial: https://wa.me/message/FO4NMGVGHVUCI1
 ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯`);
 }
@@ -13414,14 +13427,14 @@ let RG = `╭⪩⪨━━━━━━━━━━━━━━━━━━━━�
 await conn.sendMessage(from, {
 interactiveMessage: {
 title: RG,
-footer: "© Zyron-MD • Clique para baixar",
+footer: "© Kyara • Clique para baixar",
 thumbnail: video.thumbnail,
 nativeFlowMessage: {
 messageParamsJson: JSON.stringify({
 limited_time_offer: {
-text: "© Zyron-MD",
+text: "© Kyara",
 url: "https://wa.me/5519995729970",
-copy_code: "© Zyron-MD",
+copy_code: "© Kyara",
 expiration_time: Date.now() + (86400000 * 30)
 },
 bottom_sheet: {
@@ -13434,7 +13447,7 @@ tap_target_configuration: {
 title: "Play Downloader",
 description: "Sistema de download",
 canonical_url: "https://wa.me/5519995729970",
-domain: "gzee-scripts-dev.github.io",
+domain: "",
 button_index: 0
 }
 }),
@@ -13488,48 +13501,70 @@ break;
 
 case 'playdl': {
 try {
-if (!q) return reply("❌ Envie o link");
+    if (!q?.trim()) return reply("❌ Envie o link ou ID do vídeo.");
 
-await reagir(from, "🎧");
+    await reagir(from, "🎧");
 
-const pasta = "./temp";
-if (!fs.existsSync(pasta)) fs.mkdirSync(pasta);
+    const pasta = "./temp";
+    if (!fs.existsSync(pasta)) fs.mkdirSync(pasta, { recursive: true });
 
-const file = `audio_${Date.now()}.mp3`;
-const output = path.join(pasta, file);
+    const entrada = q.trim();
+    const url = /^https?:\/\//i.test(entrada)
+        ? entrada
+        : `https://www.youtube.com/watch?v=${encodeURIComponent(entrada)}`;
 
-// 🔥 yt-dlp direto (sem ytdl-core)
-const cmd = `yt-dlp -x --audio-format mp3 -o "${output}" "${q}"`;
+    const file = `audio_${Date.now()}.mp3`;
+    const output = path.resolve(pasta, file);
 
-exec(cmd, async (err) => {
-try {
+    const { execFile } = require("child_process");
 
-if (err) {
-console.log(err);
-return reply("❌ Erro ao baixar áudio");
-}
+    execFile(
+        "yt-dlp",
+        [
+            "--no-playlist",
+                                "--extractor-args", "youtube:player_client=mweb",
+            "-x",
+            "--audio-format", "mp3",
+            "-o", output,
+            url
+        ],
+        async (err, stdout, stderr) => {
+            try {
+                if (err) {
+                    console.log("ERRO YT-DLP:", stderr || err);
+                    await reagir(from, "❌");
+                    return reply("❌ Erro ao baixar áudio.");
+                }
 
-if (!fs.existsSync(output)) {
-return reply("❌ arquivo não gerado");
-}
+                if (!fs.existsSync(output)) {
+                    await reagir(from, "❌");
+                    return reply("❌ Arquivo de áudio não foi gerado.");
+                }
 
-await conn.sendMessage(from, {
-audio: fs.readFileSync(output),
-mimetype: "audio/mpeg",
-fileName: file
-}, { quoted: selo });
+                await conn.sendMessage(from, {
+                    audio: fs.readFileSync(output),
+                    mimetype: "audio/mpeg",
+                    fileName: file
+                }, { quoted: selo || info });
 
-fs.unlinkSync(output);
+                fs.unlinkSync(output);
+                await reagir(from, "✅");
+
+            } catch (e) {
+                console.log("ERRO AO ENVIAR ÁUDIO:", e);
+                try {
+                    if (fs.existsSync(output)) fs.unlinkSync(output);
+                } catch {}
+                await reagir(from, "❌");
+                reply("❌ Erro ao enviar áudio.");
+            }
+        }
+    );
 
 } catch (e) {
-console.log(e);
-reply("❌ erro ao enviar áudio");
-}
-});
-
-} catch (e) {
-console.log(e);
-reply("❌ erro no playdl");
+    console.log("ERRO PLAYDL:", e);
+    await reagir(from, "❌");
+    reply("❌ Erro no comando playdl.");
 }
 }
 break;
@@ -13595,20 +13630,8 @@ case 'menu': {
 try {
 await reagir(from, "❤️‍🔥");
 
-console.log("ENTROU NA CASE MENU");
+console.log("[MENU] Iniciando envio...");
 
-// SOCKET
-const sock = global.sock || conn || client || this;
-
-// UPLOAD SAFE
-let upload;
-try {
-  upload = sock?.waUploadToServer || sock?.upload;
-} catch {
-  upload = undefined;
-}
-
-// IMG
 const imgMenuBuffer = fs.readFileSync("./dono/menus/Foto-menu/img-menu.jpg");
 
 const mediaMenu = await prepareWAMessageMedia(
@@ -13616,149 +13639,85 @@ const mediaMenu = await prepareWAMessageMedia(
   { upload: conn.waUploadToServer }
 );
 
-// 📂 LISTA COM CATEGORIAS
+console.log("[MENU] Imagem preparada");
+
 const listaMenus = {
   title: "╭─〔 ⚡ 𝒁𝒀𝑹𝑶𝑵 𝑴𝑬𝑵𝑼 ⚡ 〕─╮",
   sections: [
     {
-      title: "╭━━〔 📂 𝑪𝑨𝑻𝑬𝑮𝑶𝑹𝑰𝑨𝑺 〕━━⬣",
-      highlight_label: `👑 ${NickDono}`,
+      title: "📂 CATEGORIAS",
       rows: [
         {
-          header: "🌌 𝑷𝑹𝑰𝑵𝑪𝑰𝑷𝑨𝑳",
-          title: "📜 𝑴𝒆𝒏𝒖 𝑷𝒓𝒊𝒏𝒄𝒊𝒑𝒂𝒍",
-          description: "⟡ Comandos essenciais do Zyron-MD",
-          id: prefix + "menuu"
+          header: "🌌 PRINCIPAL",
+          title: "📜 Menu Principal",
+          description: "Comandos essenciais do Kyara",
+          id: `${prefix}menuu`
         },
         {
-          header: "🔞 𝑽𝑰𝑷",
-          title: "🚫 𝑴𝒆𝒏𝒖 +18",
-          description: "⟡ Funções exclusivas e privadas",
-          id: prefix + "menu18"
+          header: "📥 DOWNLOADS",
+          title: "🎧 Menu Download",
+          description: "Baixe músicas, vídeos e mídias",
+          id: `${prefix}menudown`
         },
         {
-          header: "📥 𝑫𝑶𝑾𝑵𝑳𝑶𝑨𝑫𝑺",
-          title: "🎧 𝑴𝒆𝒏𝒖 𝑫𝒐𝒘𝒏𝒍𝒐𝒂𝒅",
-          description: "⟡ Baixe músicas, vídeos e mídias",
-          id: prefix + "menudown"
+          header: "🔎 PESQUISA",
+          title: "❤️‍🔥 Menu Pesquisa",
+          description: "Google, IA, consultas e buscas",
+          id: `${prefix}menupesquisa`
         },
         {
-          header: "🔎 𝑼𝑻𝑬𝑰𝑺",
-          title: "❤️‍🔥 𝑴𝒆𝒏𝒖 𝑼𝒕𝒆𝒊𝒔",
-          description: "⟡ Google, IA, consultas e buscas online",
-          id: prefix + "menupesquisa"
+          header: "🎭 STICKERS",
+          title: "🖼️ Menu Figurinhas",
+          description: "Criar e converter stickers",
+          id: `${prefix}menufig`
         },
         {
-          header: "🎭 𝑺𝑻𝑰𝑪𝑲𝑬𝑹𝑺",
-          title: "🖼️ 𝑴𝒆𝒏𝒖 𝑭𝒊𝒈𝒖𝒓𝒊𝒏𝒉𝒂𝒔",
-          description: "⟡ Criar, editar e converter stickers",
-          id: prefix + "menufig"
+          header: "🛡️ ADMIN",
+          title: "💠 Menu Admin",
+          description: "Controle e moderação do grupo",
+          id: `${prefix}menuadm`
         },
         {
-          header: "👑 𝑫𝑶𝑵𝑶",
-          title: "⚜️ 𝑴𝒆𝒏𝒖 𝑫𝒐𝒏𝒐",
-          description: "⟡ Área restrita do GzeeScriptsDev",
-          id: prefix + "menudono"
+          header: "👥 MEMBROS",
+          title: "👤 Menu Membros",
+          description: "Recursos para membros",
+          id: `${prefix}menumemb`
         },
         {
-          header: "🛡️ 𝑨𝑫𝑴𝑰𝑵",
-          title: "💠 𝑴𝒆𝒏𝒖 𝑨𝒅𝒎",
-          description: "⟡ Controle, proteção e moderação",
-          id: prefix + "menuadm"
+          header: "🎮 DIVERSÃO",
+          title: "🤣 Menu Brincadeiras",
+          description: "Jogos e comandos de diversão",
+          id: `${prefix}menubrink`
         },
         {
-        header: "💎 𝑽𝑰𝑷",
-        title: '💎 𝑷𝒂𝒊𝒏𝒆𝒍 𝑽𝒊𝒑',
-        description: '⟡ Comandos exclusivos para usuários VIP',
-        id: `${prefix}menuvip`
+          header: "⚔️ RPG",
+          title: "🧙 Menu RPG",
+          description: "Aventuras, duelos e economia",
+          id: `${prefix}menurpg`
         },
         {
-        header: "🛡️ 𝑺𝑬𝑮𝑼𝑹𝑨𝑵𝑪̧𝑨",
-        title: "❤️‍🔥 𝑴𝒆𝒏𝒖 𝑺𝒆𝒈𝒖𝒓𝒂𝒏𝒄̧𝒂",
-        description: "⟡ Anti-link, anti-raid, anti-spam e proteções avançadas",
-        id: prefix + "menuseguranca"
+          header: "🪪 PERFIL",
+          title: "👤 Seu Perfil",
+          description: "Veja suas informações",
+          id: `${prefix}perfil`
         },
         {
-          header: "👥 𝑴𝑬𝑴𝑩𝑹𝑶𝑺",
-          title: "👤 𝑴𝒆𝒏𝒖 𝑴𝒆𝒎𝒃𝒓𝒐𝒔",
-          description: "⟡ Recursos liberados para membros",
-          id: prefix + "menumemb"
-        },
-        {
-          header: "🎮 𝑫𝑰𝑽𝑬𝑹𝑺𝑨̃𝑶",
-          title: "🤣 𝑴𝒆𝒏𝒖 𝑩𝒓𝒊𝒏𝒄𝒂𝒅𝒆𝒊𝒓𝒂𝒔",
-          description: "⟡ Jogos, zoeiras e comandos aleatórios",
-          id: prefix + "menubrink"
-        },
-        {
-          header: "⚔️ 𝑹𝑷𝑮",
-          title: "🧙 𝑴𝒆𝒏𝒖 𝑹𝑷𝑮",
-          description: "⟡ Aventuras, duelos, raids, pets e economia",
-          id: prefix + "menurpg"
-        },
-        {
-          header: "🪪 𝑷𝑬𝑹𝑭𝑰𝑳",
-          title: "👤 𝑺𝒆𝒖 𝑷𝒆𝒓𝒇𝒊𝒍",
-          description: "⟡ Veja suas informações no bot",
-          id: prefix + "perfil"
-        },
-        {
-          header: "🛒 𝑳𝑶𝑱𝑨",
-          title: "🛍️ 𝑪𝒂𝒕𝒂́𝒍𝒐𝒈𝒐",
-          description: "⟡ Produtos, serviços e ofertas 24h",
-          id: prefix + "catalogo"
+          header: "🛒 LOJA",
+          title: "🛍️ Catálogo",
+          description: "Produtos e serviços",
+          id: `${prefix}catalogo`
         }
       ]
     }
   ]
 };
 
-// 🔘 BOTÕES
 const botoes = [
-{
-name: "single_select",
-buttonParamsJson: JSON.stringify(listaMenus)
-},
-{
-name: "cta_url",
-buttonParamsJson: JSON.stringify({
-display_text: "𝒁𝒚𝒓𝒐𝒏-𝑨𝑰 🂱 𝑵𝑿𝑹ᵒᶠᶜ",
-url: "https://chat.whatsapp.com/ClSdOMal1Rc7EbOay45cew"
-})
-}
+  {
+    name: "single_select",
+    buttonParamsJson: JSON.stringify(listaMenus)
+  }
 ];
-
-// 🧠 TEXTO
-
-const paciencia = [
-"0%",
-"-500%",
-"Roubada pelo usuário anterior",
-"Em manutenção",
-"Foi de base",
-"Não encontrada",
-"████░░░░░░ 4%",
-"☠️",
-"Va'i se fuder desgraça",
-"Seu merda",
-"Filha da puta"
-];
-
-const vontade = [
-"Nem um pouco",
-"Me obrigaram",
-"Infelizmente",
-"Queria estar desligado",
-"Menor que 1%",
-"Erro de sistema",
-"🤡",
-"💀",
-"😴",
-"Depende do seu QI"
-];
-
-const pacienciaRandom = paciencia[Math.floor(Math.random() * paciencia.length)];
-const vontadeRandom = vontade[Math.floor(Math.random() * vontade.length)];
 
 const textok = `
 ╭━━〔 🤖 𝒁𝒀𝑹𝑶𝑵-𝑴𝑫 〕━━⬣
@@ -13769,75 +13728,49 @@ const textok = `
 ┃
 ╰━━━━━━━━━━━━━━⬣
 
-💀 Eae, criatura.
+📡 Sistema: Online
+🚀 Status: Funcionando
 
-📡 Sou diferente da tua Ex, eu não te
-   abandono quando precisa.
-
-╭━━━━━━━━━━━━━━━⬣
-┃ 🧠 Sistema: Online
-┃ 🚀 Status: Funcionando
-┃ ☕ Paciência: ${pacienciaRandom}
-┃ 🔥 Vontade de responder: ${vontadeRandom}
-╰━━━━━━━━━━━━━━━⬣
-
-📂 Escolhe um menu aí bb
-
-> Desenvolvido por GzeeScriptsDev</>
+📂 Escolha uma categoria abaixo.
 `;
 
-// 🎴 CARD
-const carouselMessage = {
-cards: [
-{
-header: { hasMediaAttachment: true, imageMessage: mediaMenu.imageMessage },
-headerType: "IMAGE",
-body: { text: textok },
-footer: { text: `© ${NickDono}` },
+const mensagemMenu = {
+  interactiveMessage: {
+    header: {
+      title: "⚡ KYARA",
+      hasMediaAttachment: true,
+      imageMessage: mediaMenu.imageMessage
+    },
 
-// 🔥
-nativeFlowMessage: {
-messageParamsJson: JSON.stringify({
-bottom_sheet: {
-in_thread_buttons_limit: 3,
-divider_indices: [1],
-list_title: "📂 Menus do Bot",
-button_title: "Selecionar"
-},
-tap_target_configuration: {
-title: "Zyron-MD",
-description: "Central de comandos",
-canonical_url: "https://wa.me/5519995729970",
-domain: "gzee-scripts-dev.github.io",
-button_index: 0
-}
-}),
-buttons: botoes
-}
+    body: {
+      text: textok
+    },
 
-}
-]
+    footer: {
+      text: `© ${NickDono}`
+    },
+
+    nativeFlowMessage: {
+      buttons: botoes
+    }
+  }
 };
 
-// 🚀 ENVIO
-await sock.relayMessage(
-from,
-{
-interactiveMessage: {
-contextInfo: {
-participant: from,
-quotedMessage: { conversation: "❤️‍🔥" }
-},
-body: { text: "❤️‍🔥 ᴍᴇɴᴜ ᴄᴀʀʀᴇɢᴀᴅᴏ ❤️‍🔥" },
-carouselMessage
-}
-},
-{}
+console.log("[MENU] Enviando interactiveMessage...");
+
+await conn.relayMessage(
+  from,
+  mensagemMenu,
+  {
+    messageId: `${Date.now()}-menu`
+  }
 );
 
+console.log("[MENU] Enviado com sucesso!");
+
 } catch (e) {
-console.error(e);
-reply(mess.error());
+console.error("[MENU ERROR]", e);
+await reply("❌ Erro ao enviar o menu.");
 }
 break;
 }
@@ -13926,7 +13859,7 @@ id
 const carouselMessage = {
 cards: [
 criarCard(
-"🔗 ZYRON SECURITY • LINKS",
+"🔗 KYARA SECURITY • LINKS",
 `╭━━〔 🔗 PROTEÇÃO DE LINKS 〕━━⬣
 
 ┃ 🔗 ${prefix}antilink on/off
@@ -13942,7 +13875,7 @@ btn("📎 HARD", `${prefix}antilinkhard on`)
 ),
 
 criarCard(
-"🚨 ZYRON SECURITY • SPAM",
+"🚨 KYARA SECURITY • SPAM",
 `╭━━〔 🚨 ANTI SPAM 〕━━⬣
 
 ┃ 📛 ${prefix}antispam on/off
@@ -13959,7 +13892,7 @@ btn("💀 TRAVA", `${prefix}antitrava on`)
 ),
 
 criarCard(
-"👮 ZYRON SECURITY • MOD",
+"👮 KYARA SECURITY • MOD",
 `╭━━〔 👮 MODERAÇÃO 〕━━⬣
 ┃ ⚠️ ${prefix}warn @user
 ┃ ♻️ ${prefix}unwarn @user
@@ -13977,7 +13910,7 @@ btn("🚷 BAN", `${prefix}ban`)
 ),
 
 criarCard(
-"👑 ZYRON SECURITY • ADM",
+"👑 KYARA SECURITY • ADM",
 `╭━━〔 👑 PROTEÇÃO ADM 〕━━⬣
 
 ┃ 👑 ${prefix}antiadm on/off
@@ -13994,7 +13927,7 @@ btn("🚫 ANTIBAN", `${prefix}antiban on`)
 ),
 
 criarCard(
-"📱 ZYRON SECURITY • MÍDIA",
+"📱 KYARA SECURITY • MÍDIA",
 `╭━━〔 📱 PROTEÇÃO DE MÍDIA 〕━━⬣
 
 ┃ 🎵 ${prefix}antiaudio on/off
@@ -14012,7 +13945,7 @@ btn("🎭 STICKER", `${prefix}antisticker on`)
 ),
 
 criarCard(
-"🌎 ZYRON SECURITY • MEMBROS",
+"🌎 KYARA SECURITY • MEMBROS",
 `╭━━〔 🌎 CONTROLE DE MEMBROS 〕━━⬣
 
 ┃ 🇧🇷 ${prefix}antifake on/off
@@ -14029,7 +13962,7 @@ btn("🚪 ENTRAR", `${prefix}antientrar on`)
 ),
 
 criarCard(
-"🔥 ZYRON SECURITY • ESPECIAL",
+"🔥 KYARA SECURITY • ESPECIAL",
 `╭━━〔 🔥 PROTEÇÕES ESPECIAIS 〕━━⬣
 
 ┃ 👻 ${prefix}antiinvisivel on/off
@@ -14047,7 +13980,7 @@ btn("📞 CALL", `${prefix}anticall on`)
 ),
 
 criarCard(
-"⚙️ ZYRON SECURITY • GERAL",
+"⚙️ KYARA SECURITY • GERAL",
 `╭━━〔 ⚙️ CONFIGURAÇÕES 〕━━⬣
 
 ┃ 🛡️ ${prefix}seguranca on
@@ -14073,7 +14006,7 @@ contextInfo: {
 participant: sender,
 mentionedJid: [sender],
 quotedMessage: {
-conversation: "🛡️ ZYRON SECURITY"
+conversation: "🛡️ KYARA SECURITY"
 }
 },
 body: {
@@ -14609,7 +14542,7 @@ rows: [
 await conn.relayMessage(from, {
 interactiveMessage: {
 body: {
-text: "🛒 *LOJA ZYRON STORE*\n\nEscolha uma categoria abaixo:"
+text: "🛒 *LOJA KYARA STORE*\n\nEscolha uma categoria abaixo:"
 },
 footer: {
 text: "💰 Economia RPG"
@@ -14982,10 +14915,10 @@ const xpUser = Number(user.xp || 0);
 
 // Apenas o dono do bot pode pegar empregos exclusivos
 if (emprego.dono && !isOwner) {
-return reply(`❌ Esse emprego é exclusivo do dono da Zyron.
+return reply(`❌ Esse emprego é exclusivo do dono da Kyara.
 
 💼 Cargo: ${emprego.nome}
-👑 Apenas o criador da Zyron pode possuir esse cargo.`);
+👑 Apenas o criador da Kyara pode possuir esse cargo.`);
 }
 
 if (xpUser < emprego.xp) {
@@ -15099,7 +15032,7 @@ ${status(gp.anticall)} AntiCall
 ${status(gp.antipv)} AntiPV
 
 ╰━━━━━━━━━━━━━━━━━━⬣
-🤖 Zyron Security System
+🤖 Kyara Security System
 `);
 }
 break;
@@ -15689,7 +15622,7 @@ break;
 
 //COMANDOS DE IA
 
-case 'Zyronimg': {
+case 'Kyaraimg': {
 try {
 const quoted = info.message?.extendedTextMessage?.contextInfo?.quotedMessage;
 const quotedInfo = info.message?.extendedTextMessage?.contextInfo;
@@ -15747,7 +15680,7 @@ throw new Error(data?.message || 'API não retornou imagem.');
 await conn.sendMessage(from, {
 image: { url: data.imagem },
 caption: `┏━━━━━━━━━━━━━━━┓
-┃ 🖼️ *ZYRON IMAGE AI*
+┃ 🖼️ *KYARA IMAGE AI*
 ┗━━━━━━━━━━━━━━━┛
 
 ✨ *Transformação concluída!*
@@ -15755,12 +15688,12 @@ caption: `┏━━━━━━━━━━━━━━━┓
 📌 *Prompt:*
 ➜ ${q}
 
-🤖 IA: Zyron-IMG 2.3
+🤖 IA: Kyara-IMG 2.3
 ⚙️ Status: Finalizado
-🚀 Powered By Zyron-MD
+🚀 Powered By Kyara
 
 ━━━━━━━━━━━━━━━━━━
-> GzeeScriptsDev`
+`
 }, { quoted: selo });
 
 await conn.sendMessage(from, { react: { text: '✅', key: info.key } });
@@ -15859,7 +15792,7 @@ model: modelo,
 messages: [
 {
 role: 'system',
-content: 'Você é Zyron Coder, especialista em programação. Responda em português e gere códigos complexos, se alguém te mandar fazer uma case responda como uma ia altamente profissional que sabe exatamente oque está sendo pedido.'
+content: 'Você é Kyara Coder, especialista em programação. Responda em português e gere códigos complexos, se alguém te mandar fazer uma case responda como uma ia altamente profissional que sabe exatamente oque está sendo pedido.'
 },
 {
 role: 'user',
@@ -15887,8 +15820,8 @@ console.log(`[FALHOU] ${modelo}`, e.response?.data || e.message);
 if (!resposta) return reply('❌ Todos os modelos estão indisponíveis no momento.');
 
 await conn.sendMessage(from, {
-text: `╔━᳀『 💻 ZYRON CODER 』═᳀
-┃ 🤖 Modelo: Zyron-AI 3.1
+text: `╔━᳀『 💻 KYARA CODER 』═᳀
+┃ 🤖 Modelo: Kyara-AI 3.1
 ┃ 👤 Usuário: ${pushname}
 ╚━━━━━━━━━━━━━━
 ${resposta}`
@@ -15985,8 +15918,8 @@ reply('❌ Erro ao consultar a IA.');
 }
 break;
 
-case 'zyronvideo':
-case 'zyronimg': {
+case 'kyaravideo':
+case 'kyaraimg': {
 try {
 if (!q) return reply(`Exemplo:\n${prefix}img gato preto`);
 
@@ -16028,10 +15961,10 @@ await conn.sendMessage(from, {
 }, { quoted: info });
 
 } catch (e) {
-console.log('ERRO ZYRON:', e?.response?.status || e.message);
+console.log('ERRO KYARA:', e?.response?.status || e.message);
 
-if (e?.response?.status === 401) return reply('❌ API key da Zyron inválida.');
-if (e?.response?.status === 429) return reply('❌ Limite da Zyron atingido. Tenta mais tarde.');
+if (e?.response?.status === 401) return reply('❌ API key da Kyara inválida.');
+if (e?.response?.status === 429) return reply('❌ Limite da Kyara atingido. Tenta mais tarde.');
 
 reply('❌ Erro ao buscar imagem.');
 }
@@ -16130,7 +16063,7 @@ const frases = [
 "Dê o seu mínimo",
 "Seja protagonista",
 "A vida é, desafio",
-"Manda o desgraçado do Gzee pagar meu salário esse fdp"
+"Manda o desgraçado do Kyara pagar meu salário esse fdp"
 ];
 
 let frase = frases[Math.floor(Math.random() * frases.length)];
@@ -16199,7 +16132,7 @@ return reply('_Erro ao gerar textcraft._');
 
 await conn.sendMessage(from, {
 image: { url: data.url },
-caption: '> _Zyron-MD & Zyron-AI_'
+caption: '> _Kyara & Kyara-AI_'
 }, { quoted: selo });
 
 } catch (e) {
@@ -16212,16 +16145,16 @@ break;
 case 'botinfo': {
 reply(`🤖 *BOT INFO*
 
-Nome: Zyron-MD
+Nome: Kyara
 Descrição: 
-🤖 Zyron-MD & Zyron-AI
+🤖 Kyara & Kyara-AI
 
-O Zyron-MD é um poderoso bot multifuncional para WhatsApp, desenvolvido pela Gzee Studio Crew, projetado para oferecer desempenho, segurança e praticidade em um único sistema.
+O Kyara é um poderoso bot multifuncional para WhatsApp, desenvolvido pela Kyara, projetado para oferecer desempenho, segurança e praticidade em um único sistema.
 
-Equipado com a tecnologia Zyron-AI, o bot é capaz de responder perguntas, auxiliar usuários, executar comandos administrativos, fornecer ferramentas de entretenimento, downloads, utilidades e diversas funções avançadas para grupos e uso privado.
+Equipado com a tecnologia Kyara-AI, o bot é capaz de responder perguntas, auxiliar usuários, executar comandos administrativos, fornecer ferramentas de entretenimento, downloads, utilidades e diversas funções avançadas para grupos e uso privado.
 
 🔥 Recursos Principais
-• Inteligência Artificial integrada (Zyron-AI)
+• Inteligência Artificial integrada (Kyara-AI)
 • Sistema rápido e otimizado
 • Comandos administrativos completos
 • Ferramentas para grupos e comunidades
@@ -16233,11 +16166,11 @@ Equipado com a tecnologia Zyron-AI, o bot é capaz de responder perguntas, auxil
 🚀 Missão
 Entregar uma experiência moderna, eficiente e inteligente para administradores, membros e comunidades do WhatsApp.
 
-💻 Desenvolvido por: GzeeScriptsDev
-🏢 Empresa: Gzee Studio Crew
-🌐 Site Oficial: https://gzee-scripts-dev.github.io/Site-NXR/
+💻 Kyara
+🏢 Empresa: Kyara
+🌐 Site Oficial: https://
 
-⚖️ © 2026 Gzee Studio Crew — Todos os direitos reservados.
+⚖️ © 2026 Kyara — Todos os direitos reservados.
 
 Status: Online ✅
 Plataforma: WhatsApp Bot
@@ -16248,20 +16181,20 @@ break;
 
 case 'criador': {
 reply(`\`\`\`
-╭━━━━━━〔 🔥 GZEE SCRIPTS DEV 🔥 〕━━━━━━╮
+╭━━━━━━〔 🔥 KYARA 🔥 〕━━━━━━╮
 
-👑 Criador: GzeeScriptsDev
-🤖 Projeto: Zyron-MD
-⚡ IA: Zyron-AI
+👑 Kyara
+🤖 Projeto: Kyara
+⚡ IA: Kyara-AI
 
 🌐 Site Oficial:
-https://gzee-scripts-dev.github.io/Site-NXR/
+https://
 
 📞 Suporte Comercial:
 https://wa.me/message/FO4NMGVGHVUCI1
 
 © 2026 Todos os direitos reservados
-® Gzee Studio Crew
+® Kyara
 
 ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯
 \`\`\``)
@@ -16277,14 +16210,6 @@ Nota: ${Math.floor(Math.random() * 10)}/10`)
 }
 break;
 
-case 'bug': {
-if(!q) return reply(`🐞 Use: ${prefix}bug descrição do bug`)
-reply(`🐞 *BUG REPORTADO*
-
-Descrição: ${q}
-Status: Enviado para análise ✅`)
-}
-break;
 
 case 'status': {
 reply(`📊 *STATUS DO BOT*
@@ -16312,7 +16237,7 @@ break;
 case 'versao': {
 reply(`📦 *VERSÃO DO SISTEMA*
 
-ZYRON-MD
+KYARA
 Versão: 2.4
 Build: stable-release`)
 }
@@ -16664,68 +16589,6 @@ reply(`Erro ao buscar resultados\n\n${e.message}`);
 break;
 
 //DOWNLOADS
-case 'play': {
-try {
-
-const yts = require('yt-search')
-const ytdl = require('@distube/ytdl-core')
-
-if (!q?.trim()) {
-return reply(`🎧 Exemplo:
-${prefix + command} nome da música`);
-}
-
-await reagir(from, "⏳");
-
-const search = await yts(q)
-
-if (!search?.videos?.length) {
-await reagir(from, "❌")
-return reply("❌ Nenhum resultado encontrado.")
-}
-
-const video = search.videos[0]
-const url = video.url
-
-if (!ytdl.validateURL(url)) {
-await reagir(from, "❌")
-return reply("❌ Vídeo inválido.")
-}
-
-// 🔥 MELHOR FORMA (SEM BUFFER ESTOURAR)
-const stream = ytdl(url, {
-filter: 'audioonly',
-quality: 'highestaudio',
-highWaterMark: 1 << 25
-})
-
-await conn.sendMessage(from, {
-audio: stream,
-mimetype: "audio/mpeg",
-fileName: `${video.title}.mp3`,
-ptt: false,
-contextInfo: {
-externalAdReply: {
-title: video.title || "YouTube Audio",
-body: "Zyron-MD • Play",
-thumbnailUrl: video.thumbnail || "",
-mediaType: 1,
-renderLargerThumbnail: true,
-sourceUrl: url
-}
-}
-}, { quoted: info })
-
-await reagir(from, "✅");
-
-} catch (e) {
-console.log("ERRO PLAY:", e);
-await reagir(from, "❌");
-reply("❌ Erro ao tocar música.");
-}
-}
-break;
-
 case 'suicidio':
 case 'sair':
 case 'autoexpulsar': {
@@ -17129,7 +16992,7 @@ try {
                 message: {
                     interactiveMessage: {
                         body: { text: txt },
-                        footer: { text: 'ZYRON MD • GzeeScriptsDev</>' },
+                        footer: { text: 'KYARA MD ❤️‍🔥' },
                         header,
                         nativeFlowMessage: {
                             buttons
@@ -17304,7 +17167,7 @@ return reply(
 `⛔ *SISTEMA DESATIVADO*
 
 ✅ Somente você poderá usar meus comandos agora.
-🕸️ *Zyron entrou no modo Stealth...*`);
+🕸️ *Kyara entrou no modo Stealth...*`);
 }
 if(command === 'boton') {
 if(BotOff === false) return reply(`⚠️ *${NomeBot} já está ATIVO, mestre!*`);
@@ -17314,7 +17177,7 @@ return reply(
 `✅ *SISTEMA REATIVADO*
 
 ❤️‍🔥 Todos os usuários agora podem usar meus comandos novamente.
-🔥 *Zyron voltou ao centro de operação!*`);
+🔥 *Kyara voltou ao centro de operação!*`);
 }
 }
 break;
@@ -17345,7 +17208,7 @@ if (!So_Dono) return reply(msg.SoDono);
 
 await reagir(from, "🔄");
 
-await reply(`🔄 *Reiniciando o Zyron-MD...*
+await reply(`🔄 *Reiniciando o Kyara...*
 
 ⏳ Aguarde alguns segundos.`);
 
@@ -17369,7 +17232,7 @@ let texto = `🌌 *LISTA OFICIAL DE DONOS — ${NomeBot}* ❄️
 ┃
 ┃ 👑 ${NickDono}
 ┃ 📞 wa.me/${NumberDono}                                
-┃ 🌐 Site oficial: https://gzee-scripts-dev.github.io/Site-NXR/
+┃ 🌐 Site oficial: https://
 ┃ 📞 Número comercial: https://wa.me/message/FO4NMGVGHVUCI1
 ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯
 
@@ -17393,7 +17256,7 @@ donos.forEach((dono, i) => {
 texto += `
 
 ━━━━━━━━━━━━━━━━━━
-> *${NomeBot}: Quero matar o Gzee Scripts Dev </>* 🔥
+> *${NomeBot}: Quero matar o Kyara </>* 🔥
 `;
 
 conn?.sendMessage(from, {image: FotoMenu, caption: texto}, {quoted: info});
@@ -17523,7 +17386,7 @@ const usedRamGB = (usedMem / 1024 / 1024 / 1024).toFixed(2)
 
 // ✅ TABELA AIRich
 await conn.sendRich(from, [
-conn.makeText('🏓 # STATUS PING - ZYRON AI'),
+conn.makeText('🏓 # STATUS PING - KYARA AI'),
 
 conn.makeTable([
 ['Info', 'Valor'],
@@ -17571,7 +17434,7 @@ body: {
 text: "Escolha uma opção abaixo:"
 },
 footer: {
-text: "Zyron-MD & Zyron-AI ❤️‍🔥"
+text: "Kyara & Kyara-AI ❤️‍🔥"
 },
 nativeFlowMessage: {
 buttons: botoes
@@ -18057,7 +17920,7 @@ Selecione o sistema que deseja ativar:`
       },
       headerType: "IMAGE",
       body: { text: texto },
-      footer: { text: "Zyron-AI" },
+      footer: { text: "Kyara-AI" },
       nativeFlowMessage: { buttons: botoes }
     };
 
@@ -18116,7 +17979,7 @@ Selecione o sistema que deseja desativar:`
       },
       headerType: "IMAGE",
       body: { text: texto },
-      footer: { text: "Zyron-AI" },
+      footer: { text: "Kyara-AI" },
       nativeFlowMessage: { buttons: botoes }
     };
 
@@ -18148,7 +18011,7 @@ case 'name': {
     const [packname, author2] = q.split("/");
 
     if (!packname || !author2) {
-      return reply(`❌ *ᴠᴏᴄᴇ ᴘʀᴇᴄɪꜱᴀ ᴅᴇꜰɪɴɪʀ ᴘᴀᴄᴋ ᴇ ᴀᴜᴛᴏʀ!*\n\n📌 Exemplo:\n${prefix + command} Gzee/Gaspar`);
+      return reply(`❌ *ᴠᴏᴄᴇ ᴘʀᴇᴄɪꜱᴀ ᴅᴇꜰɪɴɪʀ ᴘᴀᴄᴋ ᴇ ᴀᴜᴛᴏʀ!*\n\n📌 Exemplo:\n${prefix + command} Kyara`);
     }
 
     await conn.sendMessage(from, { react: { text: "🎭", key: info.key } });
@@ -18204,7 +18067,7 @@ return reply(`Marque uma imagem, ou um vídeo de ate 9.9 segundos, ou uma visual
 break
 
 case 'brat': {
-if (!q) return reply(`Exemplo: ${prefix+command} Gzee Scripts Dev`)
+if (!q) return reply(`Exemplo: ${prefix+command} Kyara`)
 
 try {
 const api = await fetch(`https://zone.api.br/api/brat?text=${encodeURIComponent(q)}`)
@@ -18225,7 +18088,7 @@ reply("❌ Erro ao gerar brat")
 break
 
 case 'bratvid': {
-if (!q) return reply(`Exemplo: ${prefix+command} Gzee Scripts Dev`)
+if (!q) return reply(`Exemplo: ${prefix+command} Kyara`)
 
 try {
 
@@ -18298,17 +18161,17 @@ const nomeAlvo = num;
 const porcent = Math.floor(Math.random() * 100) + 1;
 
 const caminhos = {
-  gay: "/storage/emulated/0/Zyron-MD❤️‍🔥/Zyron-MD/gifs/gay.mp4",
-  feio: "/storage/emulated/0/Zyron-MD❤️‍🔥/Zyron-MD/gifs/feio.mp4",
-  linda: "/storage/emulated/0/Zyron-MD❤️‍🔥/Zyron-MD/gifs/linda.mp4",
-  lindo: "/storage/emulated/0/Zyron-MD❤️‍🔥/Zyron-MD/gifs/lindo.mp4",
-  corno: "/storage/emulated/0/Zyron-MD❤️‍🔥/Zyron-MD/gifs/corno.mp4",
-  invejosa: "/storage/emulated/0/Zyron-MD❤️‍🔥/Zyron-MD/gifs/invejosa.mp4",
-  invejoso: "/storage/emulated/0/Zyron-MD❤️‍🔥/Zyron-MD/gifs/invejoso.mp4",
-  vesgo: "/storage/emulated/0/Zyron-MD❤️‍🔥/Zyron-MD/gifs/vesgo.mp4",
-  chata: "/storage/emulated/0/Zyron-MD❤️‍🔥/Zyron-MD/gifs/chata.mp4",
-  chato: "/storage/emulated/0/Zyron-MD❤️‍🔥/Zyron-MD/gifs/chato.mp4",
-  burro: "/storage/emulated/0/Zyron-MD❤️‍🔥/Zyron-MD/gifs/burro.mp4"
+  gay: "/storage/emulated/0/Kyara❤️‍🔥/Kyara/gifs/gay.mp4",
+  feio: "/storage/emulated/0/Kyara❤️‍🔥/Kyara/gifs/feio.mp4",
+  linda: "/storage/emulated/0/Kyara❤️‍🔥/Kyara/gifs/linda.mp4",
+  lindo: "/storage/emulated/0/Kyara❤️‍🔥/Kyara/gifs/lindo.mp4",
+  corno: "/storage/emulated/0/Kyara❤️‍🔥/Kyara/gifs/corno.mp4",
+  invejosa: "/storage/emulated/0/Kyara❤️‍🔥/Kyara/gifs/invejosa.mp4",
+  invejoso: "/storage/emulated/0/Kyara❤️‍🔥/Kyara/gifs/invejoso.mp4",
+  vesgo: "/storage/emulated/0/Kyara❤️‍🔥/Kyara/gifs/vesgo.mp4",
+  chata: "/storage/emulated/0/Kyara❤️‍🔥/Kyara/gifs/chata.mp4",
+  chato: "/storage/emulated/0/Kyara❤️‍🔥/Kyara/gifs/chato.mp4",
+  burro: "/storage/emulated/0/Kyara❤️‍🔥/Kyara/gifs/burro.mp4"
 };
 
 const frases = {
@@ -18383,7 +18246,7 @@ try {
       imageMessage: mediaP.imageMessage
     }),
     body: proto.Message.InteractiveMessage.Body.create({
-      text: `╭━━〔 🛒 CATÁLOGO ZYRON 〕━━⬣
+      text: `╭━━〔 🛒 CATÁLOGO KYARA 〕━━⬣
 ┃
 ┃ 🤖 *BOT PERSONALIZÁVEL*
 ┃ 💰 Valor: R$ 25,00
@@ -18395,7 +18258,7 @@ try {
 ╰━━━━━━━━━━━━━━⬣`
     }),
     footer: proto.Message.InteractiveMessage.Footer.create({
-      text: 'Produto 1 • Zyron Store'
+      text: 'Produto 1 • Kyara Store'
     }),
     nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
       buttons: [
@@ -18429,7 +18292,7 @@ try {
 ╰━━━━━━━━━━━━━━⬣`
     }),
     footer: proto.Message.InteractiveMessage.Footer.create({
-      text: 'Produto 2 • Zyron Store'
+      text: 'Produto 2 • Kyara Store'
     }),
     nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
       buttons: [
@@ -18462,7 +18325,7 @@ try {
 ╰━━━━━━━━━━━━━━⬣`
     }),
     footer: proto.Message.InteractiveMessage.Footer.create({
-      text: 'Produto 3 • Zyron Store'
+      text: 'Produto 3 • Kyara Store'
     }),
     nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
       buttons: [
@@ -18495,7 +18358,7 @@ try {
 ╰━━━━━━━━━━━━━━⬣`
     }),
     footer: proto.Message.InteractiveMessage.Footer.create({
-      text: 'Produto 4 • Zyron Store'
+      text: 'Produto 4 • Kyara Store'
     }),
     nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
       buttons: [
@@ -18528,7 +18391,7 @@ try {
 ╰━━━━━━━━━━━━━━⬣`
     }),
     footer: proto.Message.InteractiveMessage.Footer.create({
-      text: 'Produto 5 • Zyron Store'
+      text: 'Produto 5 • Kyara Store'
     }),
     nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
       buttons: [
@@ -18562,7 +18425,7 @@ try {
 ╰━━━━━━━━━━━━━━⬣`
     }),
     footer: proto.Message.InteractiveMessage.Footer.create({
-      text: 'Produto 6 • Zyron Store'
+      text: 'Produto 6 • Kyara Store'
     }),
     nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
       buttons: [
@@ -18595,7 +18458,7 @@ try {
 ╰━━━━━━━━━━━━━━⬣`
     }),
     footer: proto.Message.InteractiveMessage.Footer.create({
-      text: 'Produto 7 • Zyron Store'
+      text: 'Produto 7 • Kyara Store'
     }),
     nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
       buttons: [
@@ -18628,7 +18491,7 @@ try {
 ╰━━━━━━━━━━━━━━⬣`
     }),
     footer: proto.Message.InteractiveMessage.Footer.create({
-      text: 'Produto 8 • Zyron Store'
+      text: 'Produto 8 • Kyara Store'
     }),
     nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
       buttons: [
@@ -18650,9 +18513,9 @@ try {
       imageMessage: mediaDono.imageMessage
     }),
     body: proto.Message.InteractiveMessage.Body.create({
-      text: `╭━━〔 🔥 ZYRON-MD 〕━━⬣
+      text: `╭━━〔 🔥 KYARA 〕━━⬣
 ┃
-┃ 🔥 *Bot Zyron-MD*
+┃ 🔥 *Bot Kyara*
 ┃ 💰 Valor: R$ 30,00
 ┃
 ┃ Base/bot com funções,
@@ -18661,14 +18524,14 @@ try {
 ╰━━━━━━━━━━━━━━⬣`
     }),
     footer: proto.Message.InteractiveMessage.Footer.create({
-      text: 'Produto 9 • Zyron Store'
+      text: 'Produto 9 • Kyara Store'
     }),
     nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
       buttons: [
         {
           name: "quick_reply",
           buttonParamsJson: JSON.stringify({
-            display_text: "🛒 Comprar Zyron-MD",
+            display_text: "🛒 Comprar Kyara",
             id: `${prefix}comprar 9`
           })
         }
@@ -18694,7 +18557,7 @@ try {
 ╰━━━━━━━━━━━━━━⬣`
     }),
     footer: proto.Message.InteractiveMessage.Footer.create({
-      text: 'Produto 10 • Zyron Store'
+      text: 'Produto 10 • Kyara Store'
     }),
     nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
       buttons: [
@@ -18714,7 +18577,7 @@ try {
       message: {
         interactiveMessage: proto.Message.InteractiveMessage.create({
           body: proto.Message.InteractiveMessage.Body.create({
-            text: `╭━━〔 🛒 ZYRON STORE 〕━━⬣
+            text: `╭━━〔 🛒 KYARA STORE 〕━━⬣
 ┃ Catálogo interativo carregado.
 ┃ Escolha um produto abaixo.
 ┃
@@ -18724,7 +18587,7 @@ try {
 ╰━━━━━━━━━━━━━━⬣`
           }),
           footer: proto.Message.InteractiveMessage.Footer.create({
-            text: 'By: GzeeScriptsDev</>'
+            text: 'KYARA ❤️‍🔥'
           }),
           header: proto.Message.InteractiveMessage.Header.create({
             hasMediaAttachment: false
@@ -18761,7 +18624,7 @@ const produtos = {
 "6": { nome: "📈 IMPULSIONE SUAS REDES", valor: 0.20, entrega: "redes_sociais" },
 "7": { nome: "❤️ KeyVaults Xbox360", valor: 25, entrega: "keyvault" },
 "8": { nome: "🌍 Números internacionais", valor: 3, entrega: "numero_int" },
-"9": { nome: "🔥 Bot Zyron-MD", valor: 30, entrega: "zyron_md" },
+"9": { nome: "🔥 Bot Kyara", valor: 30, entrega: "kyara_md" },
 "10": { nome: "🛠️ Serviço Personalizado", valor: 0, entrega: "orcamento" }
 };
 
@@ -19004,8 +18867,8 @@ console.log('Erro ao preparar imagem:', e.message);
 
 const caption =
 `╔══════════════════════╗
-║       🤖 ZYRON-MD 🤖          ║
-║      Powered by Zyron-AI™.      ║
+║       🤖 KYARA 🤖          ║
+║      Powered by Kyara-AI™.      ║
 ╚══════════════════════╝
 
 📂 ${nome}
@@ -19015,7 +18878,7 @@ ${descricao}
 
 ━━━━━━━━━━━━━━━━━━
 
-> Desenvolvido por: GzeeScriptsDev
+
 ⚡ Cases Exclusivas • Bots • IA`;
 
 for (const canal of CANAIS) {
@@ -19050,8 +18913,8 @@ merchant_url: pasteURL
 name: 'cta_url',
 buttonParamsJson: JSON.stringify({
 display_text: '🌐 𝑍𝑦𝑟𝑜𝑛-𝐴𝑖 & 𝑁𝑋𝑅ᵒᶠᶜ',
-url: 'https://gzee-scripts-dev.github.io/Site-NXR/',
-merchant_url: 'https://gzee-scripts-dev.github.io/Site-NXR/'
+url: 'https://',
+merchant_url: 'https://'
 })
 }
 ]
@@ -19081,7 +18944,7 @@ reply('Erro ao publicar: ' + erro);
 break;
 
 // CASES DE DONO
-//créditos: @gzeescripts
+//créditos: @kyara
 case 'banco':
 case 'bank':
 case 'saldo': {
@@ -19192,8 +19055,8 @@ reply(`╭━━━〔 🆔 𝐙𝐘𝐑𝐎𝐍 𝐈𝐃 〕━━━⬣
 ┃ ${info.key.remoteJid}
 ┃
 ┣━━━〔 ⚙️ 𝐃𝐀𝐃𝐎𝐒 𝐓𝐄́𝐂𝐍𝐈𝐂𝐎𝐒 〕━━━⬣
-┃ 🤖 Sistema: Zyron-MD
-┃ ❤️‍🔥 IA: Zyron-AI
+┃ 🤖 Sistema: Kyara
+┃ ❤️‍🔥 IA: Kyara-AI
 ┃ 🔐 Identificação concluída
 ┃
 ╰━━━〔 🚀 𝐆𝐙𝐄𝐄 𝐒𝐂𝐑𝐈𝐏𝐓𝐒 𝐃𝐄𝐕 〕━━━⬣`);
@@ -19201,7 +19064,7 @@ reply(`╭━━━〔 🆔 𝐙𝐘𝐑𝐎𝐍 𝐈𝐃 〕━━━⬣
 break;
 
 // CASES DE BRINCADEIRAS
-// créditos: @gzeescripts
+// créditos: @kyara
 
 case 'ppt':
 case 'jokenpo':
@@ -19571,7 +19434,7 @@ case 'forca': {
     { palavra: 'FIREBASE', dica: 'Plataforma do Google' },
     { palavra: 'TERMUX', dica: 'Terminal para Android' },
     { palavra: 'HOSPEDAGEM', dica: 'Onde um site fica online' },
-    { palavra: 'ZYRONMD', dica: 'Nome de um bot' },
+    { palavra: 'KYARAMD', dica: 'Nome de um bot' },
     { palavra: 'NODEJS', dica: 'Ambiente JavaScript' },
     { palavra: 'GITHUB', dica: 'Hospeda códigos' },
     { palavra: 'ANDROID', dica: 'Sistema operacional mobile' },
@@ -19701,7 +19564,7 @@ case 'chutar': {
   const chute = q.toUpperCase().trim();
 
   if (!chute) {
-    return reply(`❌ Use assim:\n${prefix}chutar Gzee`);
+    return reply(`❌ Use assim:\n${prefix}chutar Kyara`);
   }
 
   if (chute === jogo.palavra) {
@@ -19902,14 +19765,14 @@ const tipos = {
 }
 
 const gifs = {
-  gay: "/storage/emulated/0/Zyron-MD❤️‍🔥/Zyron-MD/gifs/gay.mp4",
-  feio: "/storage/emulated/0/Zyron-MD❤️‍🔥/Zyron-MD/gifs/feio.mp4",
-  lindo: "/storage/emulated/0/Zyron-MD❤️‍🔥/Zyron-MD/gifs/lindo.mp4",
-  corno: "/storage/emulated/0/Zyron-MD❤️‍🔥/Zyron-MD/gifs/corno.mp4",
-  invejoso: "/storage/emulated/0/Zyron-MD❤️‍🔥/Zyron-MD/gifs/invejoso.mp4",
-  vesgo: "/storage/emulated/0/Zyron-MD❤️‍🔥/Zyron-MD/gifs/vesgo.mp4",
-  chato: "/storage/emulated/0/Zyron-MD❤️‍🔥/Zyron-MD/gifs/chato.mp4",
-  burro: "/storage/emulated/0/Zyron-MD❤️‍🔥/Zyron-MD/gifs/burro.mp4"
+  gay: "/storage/emulated/0/Kyara❤️‍🔥/Kyara/gifs/gay.mp4",
+  feio: "/storage/emulated/0/Kyara❤️‍🔥/Kyara/gifs/feio.mp4",
+  lindo: "/storage/emulated/0/Kyara❤️‍🔥/Kyara/gifs/lindo.mp4",
+  corno: "/storage/emulated/0/Kyara❤️‍🔥/Kyara/gifs/corno.mp4",
+  invejoso: "/storage/emulated/0/Kyara❤️‍🔥/Kyara/gifs/invejoso.mp4",
+  vesgo: "/storage/emulated/0/Kyara❤️‍🔥/Kyara/gifs/vesgo.mp4",
+  chato: "/storage/emulated/0/Kyara❤️‍🔥/Kyara/gifs/chato.mp4",
+  burro: "/storage/emulated/0/Kyara❤️‍🔥/Kyara/gifs/burro.mp4"
 }
 
 const tipo = q?.toLowerCase().trim()
@@ -20051,7 +19914,7 @@ if (random <= 0) return item;
 }
 
 await reply(`╭━━━〔 🎣 𝐏𝐄𝐒𝐂𝐀 𝐙𝐘𝐑𝐎𝐍 〕━━━⬣
-┃ 🌊 As águas do Zyron estão calmas...
+┃ 🌊 As águas do Kyara estão calmas...
 ┃ 🎣 Você lançou sua linha com precisão...
 ┃ 🫧 Bolhas surgem na superfície...
 ┃ ⏳ Aguardando uma captura rara...
@@ -20601,7 +20464,7 @@ if (random <= 0) return item;
 }
 
 await reply(`╭━━━〔 ⛏️ 𝐌𝐈𝐍𝐄𝐑𝐀𝐂̧𝐀̃𝐎 𝐙𝐘𝐑𝐎𝐍 〕━━━⬣
-┃ 🪨 Você entrou nas minas do Zyron...
+┃ 🪨 Você entrou nas minas do Kyara...
 ┃ ⛏️ Preparando a picareta...
 ┃ 🔦 Iluminando os túneis escuros...
 ┃ ⚠️ Cuidado com desabamentos!
@@ -20624,7 +20487,7 @@ await reply(`╭━━━〔 💎 𝐑𝐄𝐂𝐔𝐑𝐒𝐎𝐒 𝐄𝐍𝐂�
 ┃ 📦 Separando os recursos minerados...
 ┃ ⚖️ Calculando valor da mineração...
 ┃ ✨ Convertendo esforço em XP...
-┃ 🏦 Preparando relatório do Zyron Bank...
+┃ 🏦 Preparando relatório do Kyara Bank...
 ┃
 ╰━━━〔 ❤️‍🔥 𝐙𝐘𝐑𝐎𝐍-𝐌𝐃 〕━━━⬣`);
 
@@ -21321,7 +21184,7 @@ reply(`╭━━━〔 💰 𝐌𝐄𝐑𝐂𝐀𝐃𝐎 𝐃𝐄 𝐀𝐍𝐈�
 ┃ 🏦 Saldo Atual: *$${banco[user].saldo}*
 ┃
 ┣━━━〔 📊 𝐓𝐑𝐀𝐍𝐒𝐀𝐂̧𝐀̃𝐎 〕━━━⬣
-┃ 🐾 Animais convertidos em Zyron Cash.
+┃ 🐾 Animais convertidos em Kyara Cash.
 ┃ ✅ Operação concluída com sucesso.
 ┃
 ╰━━━〔 ❤️‍🔥 𝐙𝐘𝐑𝐎𝐍 𝐇𝐔𝐍𝐓𝐈𝐍𝐆 〕━━━⬣`);
@@ -21906,16 +21769,16 @@ await conn.sendMessage(from, {
 await conn.sendRich(from, [
 
     conn.makeText(
-`# 🤖 ZYRON INFO
+`# 🤖 KYARA INFO
 
 Olá @${sender.split("@")[0]}!
 
-Bem-vindo ao *Zyron-MD*.
+Bem-vindo ao *Kyara*.
 
 🌐 Links Oficiais
 
-• [🌐 Site NXR](https://gzee-scripts-dev.github.io/Site-NXR/)
-• [💻 GitHub](https://github.com/GZEE-SCRIPTS-DEV)
+• [🌐 Site NXR](https://)
+• [💻 GitHub](https://github.com/KYARA-SCRIPTS-DEV)
 • [📢 Canal WhatsApp](https://whatsapp.com/channel/0029VbCaBlb7T8bamg6B2i0e)`
     )
 
@@ -21926,9 +21789,9 @@ await conn.sendRich(from, [
 
     conn.makeCode(
         "bash",
-`# ZYRON-MD
+`# KYARA
 
-BOT="Zyron-MD"
+BOT="Kyara"
 VERSION="3.7x2"
 STATUS="ONLINE"
 
@@ -21958,7 +21821,7 @@ break;
 case 'nametag': {
 try {
         
-    const nome = q ? q.replace(/\\n/g, '\n') : 'GZEE';
+    const nome = q ? q.replace(/\\n/g, '\n') : 'KYARA';
 
     const partes = [];
     const capabilities = [];
@@ -22538,7 +22401,7 @@ case 'copilot': {
 }
 break;
 
-//CREDITOS BY GZEESCRIPTSDEV 
+// CRÉDITOS REMOVIDOS 
 //NAO TIRA OS CRÉDITOS
 case 'statuspost':
 case 'poststatus': {
@@ -22816,7 +22679,7 @@ ${prefix + command} Flamengo`);
 
     const aoVivo = /ao vivo|em andamento|1º tempo|2º tempo|intervalo/i.test(statusJogo);
 
-    let txt = `╭━━〔 ⚽ *ZYRON PLACAR* ⚽ 〕━━⬣
+    let txt = `╭━━〔 ⚽ *KYARA PLACAR* ⚽ 〕━━⬣
 ┃
 ┃ ${aoVivo ? '🔴 *AO VIVO*' : '📊 *RESULTADO*'}
 ┃
@@ -23025,7 +22888,7 @@ reply(`❌ Erro ao tentar adicionar a Perplexity:\n${e.message}`);
 break;
 
 
-//CASE BY GZEESCRIPTSDEV NAO TIRA OS CRÉDITOS DESGRACAAA!!!!
+// CASE KYARA
 //+55 19 99572-9970
 //SUPORTE 👆
 
@@ -24050,7 +23913,7 @@ const sub = args[0]?.toLowerCase();
 const userId = jidNormalizedUser(sender);
 
 if (!sub) {
-return reply(`╭━━〔 🏪 MARKETPLACE ZYRON 〕━━⬣
+return reply(`╭━━〔 🏪 MARKETPLACE KYARA 〕━━⬣
 ┃ ${prefix}market vender item preço quantidade
 ┃ ${prefix}market listar
 ┃ ${prefix}market comprar id
@@ -24319,7 +24182,7 @@ return reply("❌ Nenhum resultado encontrado.");
 global.googleSearch = global.googleSearch || {};
 global.googleSearch[from] = resultados;
 
-let texto = `╭━━〔 🔎 ZYRON SEARCH ⚡ 〕━━╮
+let texto = `╭━━〔 🔎 KYARA SEARCH ⚡ 〕━━╮
 ┃
 ┃ 🔍 Pesquisa: ${q}
 ┃ 📦 Resultados: ${resultados.length}
@@ -24340,7 +24203,7 @@ id: `${prefix}gopen ${i + 1}`
 
 await conn.sendMessage(from, {
 text: texto,
-footer: "© Zyron-MD",
+footer: "© Kyara",
 interactiveButtons: [
 {
 name: "quick_reply",
@@ -24573,7 +24436,7 @@ const file = `./tmp/audio_${Date.now()}.mp3`;
 
 if (!fs.existsSync('./tmp')) fs.mkdirSync('./tmp');
 
-exec(`yt-dlp -x --audio-format mp3 -o "${file}" "${video.url}"`, async (err) => {
+exec(`yt-dlp --extractor-args "youtube:player_client=mweb" -x --audio-format mp3 -o "${file}" "${video.url}"`, async (err) => {
 if (err) {
 console.log('[YTMP3 ERROR]', err);
 return reply('❌ Erro ao baixar áudio.');
@@ -24582,7 +24445,7 @@ return reply('❌ Erro ao baixar áudio.');
 const audioBuffer = fs.readFileSync(file);
 
 await conn.sendMessage(from, {
-text: `🎧 *ZYRON PLAY*
+text: `🎧 *KYARA PLAY*
 
 🎵 *Título:* ${video.title}
 🔗 *Link:* ${video.url}
@@ -24894,7 +24757,7 @@ case 'ajuda': {
   try {
 
     let texto = `
-🤖 *Zyron-MD MENU*
+🤖 *Kyara MENU*
 
 📌 *Comandos básicos:*
 $menu - ver menu
@@ -24908,7 +24771,7 @@ $anime - imagem anime
 $nano - edita imagens
 
 🧠 *IA:*
-Zyron - perguntar algo
+Kyara - perguntar algo
 Veyron - conversar com IA
 $coder - traduzir texto
 
@@ -24934,10 +24797,10 @@ $ping - velocidade
 
     await conn.sendMessage(from, {
       text: texto.trim(),
-      footer: "⚡ Zyron-MD | Sistema ativo",
+      footer: "⚡ Kyara | Sistema ativo",
       buttons: [
         { buttonId: 'flux', buttonText: { displayText: '🖼️ Imagem' }, type: 1 },
-        { buttonId: 'Zyron', buttonText: { displayText: '🤖 IA' }, type: 1 },
+        { buttonId: 'Kyara', buttonText: { displayText: '🤖 IA' }, type: 1 },
         { buttonId: 'menu', buttonText: { displayText: '📜 Menu' }, type: 1 }
       ],
       headerType: 1
@@ -24950,11 +24813,11 @@ $ping - velocidade
 }
 break;
 
-case 'zyronimagine':
-case 'zyronai': {
+case 'kyaraimagine':
+case 'kyaraai': {
 try {
 
-if (!q) return reply(`🖼️ *ZYRON IMAGINE AI*
+if (!q) return reply(`🖼️ *KYARA IMAGINE AI*
 
 Use:
 ${prefix + command} texto
@@ -24966,7 +24829,7 @@ const axios = require("axios");
 
 await reagir(from, "🎨");
 
-reply("⏳ Gerando suas imagens com Zyron-AI...");
+reply("⏳ Gerando suas imagens com Kyara-AI...");
 
 const { data: gerar } = await axios.post(
 "https://zone.api.br/api/v1/grokimagine?apikey=API_KEY_SYSTEM",
@@ -25022,7 +24885,7 @@ await conn.sendMessage(from, {
 image: {
 url: img
 },
-caption: `🎨 *Zyron Imagine AI*`
+caption: `🎨 *Kyara Imagine AI*`
 });
 
 } catch (e) {
@@ -25213,7 +25076,7 @@ imageMessage: media.imageMessage
 }),
 body: proto.Message.InteractiveMessage.Body.fromObject({ text: texto }),
 footer: proto.Message.InteractiveMessage.Footer.fromObject({
-text: "Zyron-MD • Leitor de Mangás"
+text: "Kyara • Leitor de Mangás"
 }),
 nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.fromObject({
 buttons: [{
