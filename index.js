@@ -17,6 +17,7 @@
 const { menumemb, menubrink, menuRPG } = require("./dono/menus/menu");
 const { promoverUser, rebaixarUser } = require('./gzee');
 const axios = require('axios');
+const { consultarKyara } = require('./src/kyara/auto');
 const baileys = require("@systemzero/baileys");
 const { NumberDono, prefix, NickDono, NomeBot, SHIZUKU_KEY, SHIZUKU_SITE, sysite, syskey } = require("./dono/dono");
 const ytSearch = require('yt-search');
@@ -3261,7 +3262,199 @@ reply('❌ Erro ao consultar a Veyron.');
 return;
 }
 
+
+// ==================== KYARA-AI — CONVERSAÇÃO AUTOMÁTICA ====================
+if (!isCmd && isGroup) {
+try {
+const kyaraDB = require('./src/kyara/kyara').carregarMemoria();
+
+if (kyaraDB && require('./src/kyara/kyara').kyaraLigada(kyaraDB, from)) {
+
+const ctxKyara =
+info?.message?.extendedTextMessage?.contextInfo || {};
+
+const textoKyara = body?.trim() || '';
+
+const nomeKyara = pushname || 'Usuário';
+
+const textoNormalizado = textoKyara
+.toLowerCase()
+.normalize('NFD')
+.replace(/[\u0300-\u036f]/g, '');
+
+const mencionaKyara =
+menc_jid2?.some?.(jid =>
+jid === botNumber ||
+jidNormalizedUser(jid) === botNumber
+) ||
+/\bkyara\b/i.test(textoKyara);
+
+const mensagemCitada = ctxKyara?.quotedMessage;
+
+let respostaParaKyara = false;
+
+if (mensagemCitada) {
+const citadoTexto =
+mensagemCitada?.conversation ||
+mensagemCitada?.extendedTextMessage?.text ||
+mensagemCitada?.imageMessage?.caption ||
+mensagemCitada?.videoMessage?.caption ||
+'';
+
+respostaParaKyara =
+/\bkyara\b/i.test(citadoTexto) ||
+/kyara/i.test(citadoTexto);
+}
+
+const mencionaOutraPessoa =
+Array.isArray(mencionados) &&
+mencionados.length > 0 &&
+!mencionaKyara;
+
+const ignorarAutomaticamente = [
+'kk',
+'kkk',
+'kkkk',
+'kkkkk',
+'kkkkkk',
+'rs',
+'rsrs',
+'rsrsrs',
+'ok',
+'blz',
+'beleza',
+'👍',
+'😂',
+'🤣',
+'❤️',
+'❤',
+'kkkkk'
+];
+
+if (
+textoKyara &&
+!ignorarAutomaticamente.includes(textoNormalizado) &&
+!mencionaOutraPessoa
+) {
+
+console.log('[KYARA AUTO] Analisando:', textoKyara);
+
+const respostaKyara = await consultarKyara({
+db: kyaraDB,
+from,
+sender,
+nomeUsuario: nomeKyara,
+texto: textoKyara,
+mencionouKyara: mencionaKyara,
+mencionouOutraPessoa,
+foiRespostaParaKyara: respostaParaKyara,
+modoVoz: false,
+apiKey: OPENROUTER_KEY
+});
+
+if (respostaKyara) {
+
+console.log('[KYARA AUTO] Resposta:', respostaKyara);
+
+await conn.sendMessage(
+from,
+{ text: respostaKyara },
+{ quoted: selo }
+);
+
+return;
+}
+}
+}
+} catch (e) {
+console.error('[KYARA AUTO ERROR]', e?.response?.data || e?.message || e);
+}
+}
+// ==================== FIM KYARA-AI ====================
+
+
 switch (command) {
+
+case 'kyara': {
+try {
+
+if (!isGroup) {
+return reply('❌ Esse comando só pode ser usado em grupos.');
+}
+
+if (!So_Dono && !isGroupAdmins) {
+return reply('❌ Apenas administradores podem controlar a Kyara.');
+}
+
+const kyara = require('./src/kyara/kyara');
+const db = kyara.carregarMemoria();
+
+const acao = q.trim().toLowerCase();
+
+if (acao === 'on' || acao === 'ligar') {
+
+kyara.ativarKyara(db, from);
+
+return reply(
+`╔══『 🧠 KYARA-AI 』══
+┃ ✅ Conversação: ATIVADA
+┃ 💬 Modo: Conversação natural
+┃ 🧠 Contexto: Ativo
+┃ 🎙️ Voz: Disponível
+╚══════════════════`
+);
+
+}
+
+if (acao === 'off' || acao === 'desligar') {
+
+kyara.desativarKyara(db, from);
+
+return reply(
+`╔══『 🧠 KYARA-AI 』══
+┃ 🔴 Conversação: DESATIVADA
+╚══════════════════`
+);
+
+}
+
+if (acao === 'status') {
+
+const ativa = kyara.kyaraLigada(db, from);
+
+return reply(
+`╔══『 🧠 KYARA-AI 』══
+┃ Status: ${ativa ? '🟢 ATIVA' : '🔴 DESATIVADA'}
+┃ 💬 Conversação automática: ${ativa ? 'ON' : 'OFF'}
+╚══════════════════`
+);
+
+}
+
+return reply(
+`╔══『 🧠 KYARA-AI 』══
+
+Use:
+
+${prefix}kyara on
+${prefix}kyara off
+${prefix}kyara status
+
+🟢 ON  → Kyara participa das conversas.
+🔴 OFF → Kyara fica em silêncio.
+
+╚══════════════════`
+);
+
+} catch (e) {
+
+console.error('[KYARA COMANDO]', e);
+
+return reply('❌ Erro ao controlar a Kyara.');
+
+}
+}
+break;
 
 case 'memoriaveyron': {
 try {
@@ -13462,7 +13655,7 @@ id: `${prefix}playdl ${video.videoId}`
 {
 name: "quick_reply",
 buttonParamsJson: JSON.stringify({
-display_text: "🎬 Baixar Doc",
+display_text: "🎬 Baixar Vídeo",
 id: `${prefix}pdoc ${video.videoId}`
 })
 },
@@ -13642,7 +13835,7 @@ const mediaMenu = await prepareWAMessageMedia(
 console.log("[MENU] Imagem preparada");
 
 const listaMenus = {
-  title: "╭─〔 ⚡ 𝒁𝒀𝑹𝑶𝑵 𝑴𝑬𝑵𝑼 ⚡ 〕─╮",
+  title: "╭─〔 ⚡ 𝑲𝒀𝑨𝑹𝑨 𝑴𝑬𝑵𝑼 ⚡ 〕─╮",
   sections: [
     {
       title: "📂 CATEGORIAS",
